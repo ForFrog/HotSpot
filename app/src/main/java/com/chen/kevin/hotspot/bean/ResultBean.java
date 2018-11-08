@@ -1,4 +1,4 @@
-package com.chen.kevin.hotspot;
+package com.chen.kevin.hotspot.bean;
 
 import java.util.List;
 

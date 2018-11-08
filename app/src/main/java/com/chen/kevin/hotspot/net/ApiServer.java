@@ -1,5 +1,8 @@
-package com.chen.kevin.hotspot;
+package com.chen.kevin.hotspot.net;
 
+
+import com.chen.kevin.hotspot.bean.Bean;
+import com.chen.kevin.hotspot.bean.ResultBean;
 
 import java.util.List;
 
