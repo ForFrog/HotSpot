@@ -1,6 +1,5 @@
 package com.chen.kevin.hotspot;
 
-import org.reactivestreams.Subscriber;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -48,18 +47,11 @@ public class Http {
         return HttpHolder.INSTANCE;
     }
 
-    public void getTopMovie(Observer<List<ResultBean>> subscriber, int count, int index) {
-        Observable observable = apiServer.getTopMovie(count, index)
-                .map(new HttpResultFunction<List<ResultBean>>());
-        toSubscribe(subscriber, observable);
-    }
-
     private void toSubscribe(Observer subscriber, Observable observable) {
         observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
     }
-
 
     private class HttpResultFunction<T> implements Function<Bean<T>, T> {
 
@@ -70,5 +62,11 @@ public class Http {
             }
             return bean.getResults();
         }
+    }
+
+    public void getTopMovie(int count, int index, Observer<List<ResultBean>> subscriber) {
+        Observable observable = apiServer.getTopMovie(count, index)
+                .map(new HttpResultFunction<List<ResultBean>>());
+        toSubscribe(subscriber, observable);
     }
 }

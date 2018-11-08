@@ -1,7 +1,5 @@
 package com.chen.kevin.hotspot;
 
-import java.util.List;
-
 public class Bean<T> {
 
     private boolean error;
