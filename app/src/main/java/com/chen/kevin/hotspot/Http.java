@@ -5,8 +5,10 @@ import org.reactivestreams.Subscriber;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -46,10 +48,27 @@ public class Http {
         return HttpHolder.INSTANCE;
     }
 
-    public void getTopMovie(Observer<Bean<List<ResultBean>>> subscriber, int count, int index){
-        apiServer.getTopMovie(count, index)
-                .subscribeOn(Schedulers.io())
+    public void getTopMovie(Observer<List<ResultBean>> subscriber, int count, int index) {
+        Observable observable = apiServer.getTopMovie(count, index)
+                .map(new HttpResultFunction<List<ResultBean>>());
+        toSubscribe(subscriber, observable);
+    }
+
+    private void toSubscribe(Observer subscriber, Observable observable) {
+        observable.subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(subscriber);
+    }
+
+
+    private class HttpResultFunction<T> implements Function<Bean<T>, T> {
+
+        @Override
+        public T apply(Bean<T> bean) throws Exception {
+            if (bean.isError()) {
+                throw new Exception("200");
+            }
+            return bean.getResults();
+        }
     }
 }
