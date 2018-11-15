@@ -1,19 +1,21 @@
 package com.chen.kevin.hotspot.main;
 
-import android.app.ProgressDialog;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.TextView;
 import android.widget.Toast;
 
-
+import com.chaychan.library.BottomBarItem;
+import com.chaychan.library.BottomBarLayout;
 import com.chen.kevin.hotspot.R;
 import com.chen.kevin.hotspot.bean.ResultBean;
+import com.chen.kevin.hotspot.project.ProjectFragment;
 
 import java.util.List;
 
@@ -22,8 +24,7 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.Vie
 
     private static final String TAG = "MainActivity";
     private HomePresenter homePresenter;
-    private TextView tv;
-    ProgressDialog progressDialog;
+    private BottomBarLayout layoutBottom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,29 +46,41 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.Vie
             window.setAttributes(attributes);
         }
 
-        homePresenter = new HomePresenter(this);
         setContentView(R.layout.activity_main);
 
-        tv = findViewById(R.id.tv);
-        progressDialog = new ProgressDialog(this);
 
+        ProjectFragment fragment = ProjectFragment.newInstance();
+        FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.add(R.id.layout_fragment,fragment);
+        ft.commit();
+
+        layoutBottom = (BottomBarLayout) findViewById(R.id.layout_bottom);
+        layoutBottom.setOnItemSelectedListener(new BottomBarLayout.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(BottomBarItem bottomBarItem,int before, int current) {
+
+            }
+        });
+
+
+        homePresenter = new HomePresenter(this);
         homePresenter.getListData();
     }
 
 
     @Override
     public void setList(List<ResultBean> data) {
-        tv.setText(data.toString());
+
     }
 
     @Override
     public void showLoadDialog() {
-        progressDialog.show();
+
     }
 
     @Override
     public void dismissLoadDialog() {
-        progressDialog.dismiss();
 
     }
 

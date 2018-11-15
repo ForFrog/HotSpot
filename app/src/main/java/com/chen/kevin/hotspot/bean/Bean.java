@@ -1,9 +1,10 @@
 package com.chen.kevin.hotspot.bean;
 
 public class Bean<T> {
-
+    private int errorCode;
+    private Object errorMsg;
     private boolean error;
-    private T results;
+    private T data;
 
     public boolean isError() {
         return error;
@@ -14,12 +15,27 @@ public class Bean<T> {
     }
 
     public T getResults() {
-        return results;
+        return data;
     }
 
     public void setResults(T results) {
-        this.results = results;
+        this.data = results;
     }
 
 
+    public int getErrorCode() {
+        return errorCode;
+    }
+
+    public void setErrorCode(int errorCode) {
+        this.errorCode = errorCode;
+    }
+
+    public Object getErrorMsg() {
+        return errorMsg;
+    }
+
+    public void setErrorMsg(Object errorMsg) {
+        this.errorMsg = errorMsg;
+    }
 }

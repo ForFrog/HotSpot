@@ -2,6 +2,7 @@ package com.chen.kevin.hotspot.net;
 
 
 import com.chen.kevin.hotspot.bean.Bean;
+import com.chen.kevin.hotspot.bean.Project;
 import com.chen.kevin.hotspot.bean.ResultBean;
 
 import java.util.List;
@@ -19,7 +20,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Http {
 
-    public static final String BASE_URL = "http://gank.io/";
+    public static final String BASE_URL = "http://wanandroid.com/";
     private static final int DEFAULT_TIMEOUT = 5;
     private ApiServer apiServer;
     private Retrofit retrofit;
@@ -60,16 +61,22 @@ public class Http {
 
         @Override
         public T apply(Bean<T> bean) throws Exception {
-            if (bean.isError()) {
-                throw new Exception("200");
-            }
+//            if (bean.isError()) {
+//                throw new Exception("200");
+//            }
             return bean.getResults();
         }
     }
 
-    public void getTopMovie(int count, int index, Observer<List<ResultBean>> subscriber) {
-        Observable observable = apiServer.getTopMovie(count, index)
-                .map(new HttpResultFunction<List<ResultBean>>());
+//    public void getTopMovie(int count, int index, Observer<List<ResultBean>> subscriber) {
+//        Observable observable = apiServer.getTopMovie(count, index)
+//                .map(new HttpResultFunction<List<ResultBean>>());
+//        toSubscribe(subscriber, observable);
+//    }
+
+    public void getProjectData(Observer<List<Project>> subscriber) {
+        Observable observable = apiServer.getProject()
+                .map(new HttpResultFunction<List<Project>>());
         toSubscribe(subscriber, observable);
     }
 }

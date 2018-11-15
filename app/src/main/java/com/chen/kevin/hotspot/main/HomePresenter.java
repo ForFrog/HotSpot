@@ -18,30 +18,30 @@ public class HomePresenter implements IHomeContract.Presenter {
 
     @Override
     public void getListData() {
-        Http.getInstance().getTopMovie(10, 1, new HttpObserver<List<ResultBean>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                super.onSubscribe(d);
-                view.showLoadDialog();
-            }
-
-            @Override
-            public void onNext(List<ResultBean> list) {
-                view.showToast("请求成功");
-                view.setList(list);
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                super.onError(e);
-                view.showToast("网络异常");
-            }
-
-            @Override
-            public void onComplete() {
-                super.onComplete();
-                view.dismissLoadDialog();
-            }
-        });
+//        Http.getInstance().getTopMovie(10, 1, new HttpObserver<List<ResultBean>>() {
+//            @Override
+//            public void onSubscribe(Disposable d) {
+//                super.onSubscribe(d);
+//                view.showLoadDialog();
+//            }
+//
+//            @Override
+//            public void onNext(List<ResultBean> list) {
+//                view.showToast("请求成功");
+//                view.setList(list);
+//            }
+//
+//            @Override
+//            public void onError(Throwable e) {
+//                super.onError(e);
+//                view.showToast("网络异常");
+//            }
+//
+//            @Override
+//            public void onComplete() {
+//                super.onComplete();
+//                view.dismissLoadDialog();
+//            }
+//        });
     }
 }
