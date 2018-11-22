@@ -1,18 +1,8 @@
 package com.chen.kevin.hotspot.net;
 
 
-import com.chen.kevin.hotspot.bean.Bean;
-import com.chen.kevin.hotspot.bean.Project;
-import com.chen.kevin.hotspot.bean.ResultBean;
-
-import java.util.List;
 import java.util.concurrent.TimeUnit;
 
-import io.reactivex.Observable;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
@@ -22,23 +12,27 @@ public class Http {
 
     public static final String BASE_URL = "http://wanandroid.com/";
     private static final int DEFAULT_TIMEOUT = 5;
-    private ApiServer apiServer;
+
     private Retrofit retrofit;
 
     //构造方法私有
     private Http() {
-        //手动创建一个OkHttpClient并设置超时时间
-        OkHttpClient.Builder httpClientBuilder = new OkHttpClient.Builder();
-        httpClientBuilder.connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS);
+
+        OkHttpClient client = new OkHttpClient.Builder()
+                .addInterceptor(new RequestLogInterceptor())
+                .addInterceptor(new BasicParamsInterceptor())
+                .connectTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+                .writeTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+                .readTimeout(DEFAULT_TIMEOUT, TimeUnit.SECONDS)
+                .build();
 
         retrofit = new Retrofit.Builder()
-                .client(httpClientBuilder.build())
+                .client(client)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(BASE_URL)
                 .build();
 
-        apiServer = retrofit.create(ApiServer.class);
     }
 
     //在访问HttpMethods时创建单例
@@ -51,22 +45,6 @@ public class Http {
         return HttpHolder.INSTANCE;
     }
 
-    private void toSubscribe(Observer subscriber, Observable observable) {
-        observable.subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(subscriber);
-    }
-
-    private class HttpResultFunction<T> implements Function<Bean<T>, T> {
-
-        @Override
-        public T apply(Bean<T> bean) throws Exception {
-//            if (bean.isError()) {
-//                throw new Exception("200");
-//            }
-            return bean.getResults();
-        }
-    }
 
 //    public void getTopMovie(int count, int index, Observer<List<ResultBean>> subscriber) {
 //        Observable observable = apiServer.getTopMovie(count, index)
@@ -74,9 +52,16 @@ public class Http {
 //        toSubscribe(subscriber, observable);
 //    }
 
-    public void getProjectData(Observer<List<Project>> subscriber) {
-        Observable observable = apiServer.getProject()
-                .map(new HttpResultFunction<List<Project>>());
-        toSubscribe(subscriber, observable);
+
+    /**
+     * 获取对应的Service
+     *
+     * @param service Service 的 class
+     * @param <T>
+     * @return
+     */
+    public <T> T create(Class<T> service) {
+        return retrofit.create(service);
     }
+
 }

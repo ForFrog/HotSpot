@@ -14,7 +14,6 @@ import android.widget.Toast;
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
 import com.chen.kevin.hotspot.R;
-import com.chen.kevin.hotspot.bean.ResultBean;
 import com.chen.kevin.hotspot.project.ProjectFragment;
 
 import java.util.List;
@@ -70,7 +69,7 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.Vie
 
 
     @Override
-    public void setList(List<ResultBean> data) {
+    public void setList() {
 
     }
 

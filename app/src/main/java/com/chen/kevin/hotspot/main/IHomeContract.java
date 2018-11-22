@@ -3,7 +3,6 @@ package com.chen.kevin.hotspot.main;
 
 import com.chen.kevin.hotspot.IBasePresenter;
 import com.chen.kevin.hotspot.IBaseView;
-import com.chen.kevin.hotspot.bean.ResultBean;
 
 import java.util.List;
 
@@ -11,7 +10,7 @@ public interface IHomeContract {
 
     interface View extends IBaseView {
 
-        void setList(List<ResultBean> data);
+        void setList();
 
         void showLoadDialog();
 

@@ -2,26 +2,12 @@ package com.chen.kevin.hotspot.bean;
 
 public class Bean<T> {
     private int errorCode;
-    private Object errorMsg;
-    private boolean error;
+    private String errorMsg;
     private T data;
 
     public boolean isError() {
-        return error;
+        return errorCode != 0;
     }
-
-    public void setError(boolean error) {
-        this.error = error;
-    }
-
-    public T getResults() {
-        return data;
-    }
-
-    public void setResults(T results) {
-        this.data = results;
-    }
-
 
     public int getErrorCode() {
         return errorCode;
@@ -31,11 +17,19 @@ public class Bean<T> {
         this.errorCode = errorCode;
     }
 
-    public Object getErrorMsg() {
+    public String getErrorMsg() {
         return errorMsg;
     }
 
-    public void setErrorMsg(Object errorMsg) {
+    public void setErrorMsg(String errorMsg) {
         this.errorMsg = errorMsg;
+    }
+
+    public T getData() {
+        return data;
+    }
+
+    public void setData(T data) {
+        this.data = data;
     }
 }

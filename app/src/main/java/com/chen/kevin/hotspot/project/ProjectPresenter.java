@@ -1,8 +1,7 @@
 package com.chen.kevin.hotspot.project;
 
 import com.chen.kevin.hotspot.bean.Project;
-import com.chen.kevin.hotspot.bean.ResultBean;
-import com.chen.kevin.hotspot.net.Http;
+import com.chen.kevin.hotspot.net.HttpMgr;
 import com.chen.kevin.hotspot.net.HttpObserver;
 
 import java.util.List;
@@ -23,30 +22,31 @@ public class ProjectPresenter implements IProjectContract.Presenter {
 
     @Override
     public void getProjectDate() {
-        Http.getInstance().getProjectData(new HttpObserver<List<Project>>() {
-            @Override
-            public void onSubscribe(Disposable d) {
-                super.onSubscribe(d);
+        HttpMgr.getInstance()
+                .getProjectData(new HttpObserver<List<Project>>() {
+                    @Override
+                    public void onSubscribe(Disposable d) {
+                        super.onSubscribe(d);
 //                view.showLoadDialog();
-            }
+                    }
 
-            @Override
-            public void onNext(List<Project> list) {
-                view.setProjectDate(list);
-            }
+                    @Override
+                    public void onNext(List<Project> list) {
+                        view.setProjectDate(list);
+                    }
 
-            @Override
-            public void onError(Throwable e) {
-                super.onError(e);
+                    @Override
+                    public void onError(Throwable e) {
+                        super.onError(e);
 //                view.showToast("网络异常");
-            }
+                    }
 
-            @Override
-            public void onComplete() {
-                super.onComplete();
+                    @Override
+                    public void onComplete() {
+                        super.onComplete();
 //                view.dismissLoadDialog();
-            }
-        });
+                    }
+                });
 
     }
 
