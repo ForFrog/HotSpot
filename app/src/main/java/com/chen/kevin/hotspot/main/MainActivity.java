@@ -14,9 +14,7 @@ import android.widget.Toast;
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
 import com.chen.kevin.hotspot.R;
-import com.chen.kevin.hotspot.project.ProjectFragment;
-
-import java.util.List;
+import com.chen.kevin.hotspot.biz.movie.MovieInTheatersFragment;
 
 
 public class MainActivity extends AppCompatActivity implements IHomeContract.View {
@@ -48,10 +46,10 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.Vie
         setContentView(R.layout.activity_main);
 
 
-        ProjectFragment fragment = ProjectFragment.newInstance();
+        MovieInTheatersFragment fragment = MovieInTheatersFragment.newInstance();
         FragmentManager fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.add(R.id.layout_fragment,fragment);
+        ft.replace(R.id.layout_fragment,fragment);
         ft.commit();
 
         layoutBottom = (BottomBarLayout) findViewById(R.id.layout_bottom);

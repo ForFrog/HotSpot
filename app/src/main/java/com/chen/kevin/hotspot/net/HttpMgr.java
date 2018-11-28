@@ -1,5 +1,6 @@
 package com.chen.kevin.hotspot.net;
 
+import com.chen.kevin.hotspot.bean.InTheatersMovieBean;
 import com.chen.kevin.hotspot.bean.Project;
 
 import java.util.List;
@@ -8,6 +9,7 @@ import io.reactivex.Observable;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
+import retrofit2.http.Path;
 
 public class HttpMgr {
 
@@ -20,7 +22,7 @@ public class HttpMgr {
 
     //获取单例
     public static HttpMgr getInstance() {
-        return  HttpMgrHolder.INSTANCE;
+        return HttpMgrHolder.INSTANCE;
     }
 
     private HttpMgr() {
@@ -40,6 +42,10 @@ public class HttpMgr {
         toSubscribe(subscriber, observable);
     }
 
+    public void getInTheatersMovie(String city, int start, int count, Observer<InTheatersMovieBean> subscriber) {
+        Observable<InTheatersMovieBean> inTheatersMovie = apiServer.getInTheatersMovie(city, start, count);
+        toSubscribe(subscriber, inTheatersMovie);
+    }
 
 
 }

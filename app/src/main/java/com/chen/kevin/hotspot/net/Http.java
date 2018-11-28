@@ -10,7 +10,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class Http {
 
-    public static final String BASE_URL = "http://wanandroid.com/";
+    private static final String BASE_URL = "https://api.douban.com/";
     private static final int DEFAULT_TIMEOUT = 5;
 
     private Retrofit retrofit;

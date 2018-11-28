@@ -21,6 +21,7 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
 
     @Nullable
     protected T mPresenter;
+    private View mRootView;
 
 
     protected abstract int getLayoutId();
@@ -37,9 +38,15 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View mRootView = inflater.inflate(getLayoutId(), container, false);
-        initView(mRootView);
+        mRootView = inflater.inflate(getLayoutId(), container, false);
+
         return mRootView;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initView(mRootView);
     }
 
     @Override
