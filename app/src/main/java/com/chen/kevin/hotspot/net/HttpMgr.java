@@ -44,8 +44,8 @@ public class HttpMgr {
 
     public void getInTheatersMovie(String city, int start, int count, Observer<InTheatersMovieBean> subscriber) {
         Observable<InTheatersMovieBean> inTheatersMovie = apiServer.getInTheatersMovie(city, start, count);
+
         toSubscribe(subscriber, inTheatersMovie);
     }
-
 
 }

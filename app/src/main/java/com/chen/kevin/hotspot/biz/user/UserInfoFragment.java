@@ -1,4 +1,4 @@
-package com.chen.kevin.hotspot.biz.movie;
+package com.chen.kevin.hotspot.biz.user;
 
 import android.arch.lifecycle.LifecycleObserver;
 import android.os.Bundle;
@@ -10,9 +10,11 @@ import android.view.View;
 import com.chen.kevin.hotspot.R;
 import com.chen.kevin.hotspot.base.BaseFragment;
 import com.chen.kevin.hotspot.bean.InTheatersMovieBean;
+import com.chen.kevin.hotspot.biz.movie.IMovieContract;
+import com.chen.kevin.hotspot.biz.movie.MoviePresenter;
 import com.chen.kevin.hotspot.biz.movie.adapter.MovieInTheatersAdapter;
 
-public class MovieInTheatersFragment extends BaseFragment<MoviePresenter> implements IMovieContract.View, SwipeRefreshLayout.OnRefreshListener {
+public class UserInfoFragment extends BaseFragment<MoviePresenter> implements IMovieContract.View, SwipeRefreshLayout.OnRefreshListener {
 
     private SwipeRefreshLayout layoutRefresh;
 
@@ -21,9 +23,9 @@ public class MovieInTheatersFragment extends BaseFragment<MoviePresenter> implem
     private MovieInTheatersAdapter adapter;
 
 
-    public static MovieInTheatersFragment newInstance() {
+    public static UserInfoFragment newInstance() {
         Bundle args = new Bundle();
-        MovieInTheatersFragment fragment = new MovieInTheatersFragment();
+        UserInfoFragment fragment = new UserInfoFragment();
         fragment.setArguments(args);
         return fragment;
     }

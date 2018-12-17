@@ -3,9 +3,11 @@ package com.chen.kevin.hotspot.main;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -15,6 +17,10 @@ import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
 import com.chen.kevin.hotspot.R;
 import com.chen.kevin.hotspot.biz.movie.MovieInTheatersFragment;
+import com.chen.kevin.hotspot.biz.user.UserInfoFragment;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class MainActivity extends AppCompatActivity implements IHomeContract.View {
@@ -22,6 +28,9 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.Vie
     private static final String TAG = "MainActivity";
     private HomePresenter homePresenter;
     private BottomBarLayout layoutBottom;
+    private List<Fragment> fragmentList;
+    private FragmentManager fm;
+    private UserInfoFragment userInfoFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +53,24 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.Vie
         }
 
         setContentView(R.layout.activity_main);
-
-
+        fragmentList = new ArrayList<>();
         MovieInTheatersFragment fragment = MovieInTheatersFragment.newInstance();
-        FragmentManager fm = getSupportFragmentManager();
+        userInfoFragment = UserInfoFragment.newInstance();
+        fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.layout_fragment,fragment);
+        ft.replace(R.id.layout_fragment, fragment);
         ft.commit();
 
+        fragmentList.add(fragment);
+        fragmentList.add(fragment);
+        fragmentList.add(fragment);
+        fragmentList.add(userInfoFragment);
         layoutBottom = (BottomBarLayout) findViewById(R.id.layout_bottom);
         layoutBottom.setOnItemSelectedListener(new BottomBarLayout.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(BottomBarItem bottomBarItem,int before, int current) {
-
+            public void onItemSelected(BottomBarItem bottomBarItem, int before, int current) {
+                Log.d(TAG, "onItemSelected: before:" + before + "  current:" + current);
+                fm.beginTransaction().replace(R.id.layout_fragment, fragmentList.get(current)).commit();
             }
         });
 
