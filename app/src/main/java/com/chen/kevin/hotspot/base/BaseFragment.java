@@ -1,6 +1,5 @@
 package com.chen.kevin.hotspot.base;
 
-import android.arch.lifecycle.Lifecycle;
 import android.arch.lifecycle.LifecycleObserver;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,7 +8,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.chen.kevin.hotspot.IBasePresenter;
 import com.chen.kevin.hotspot.IBaseView;
 
 
@@ -18,10 +16,8 @@ import com.chen.kevin.hotspot.IBaseView;
  * date: 2018/9/13
  */
 
-public abstract class BaseFragment<T extends IBasePresenter> extends Fragment implements IBaseView {
+public abstract class BaseFragment extends Fragment implements IBaseView {
 
-    @Nullable
-    protected T mPresenter;
     private View mRootView;
 
 
@@ -35,8 +31,11 @@ public abstract class BaseFragment<T extends IBasePresenter> extends Fragment im
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Lifecycle lifecycle = getLifecycle();
-        lifecycle.addObserver(getObserver());
+        LifecycleObserver observer = getObserver();
+        if (observer != null) {
+            getLifecycle().addObserver(observer);
+        }
+
         attachView();
     }
 

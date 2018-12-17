@@ -12,14 +12,14 @@ import com.chen.kevin.hotspot.base.BaseFragment;
 import com.chen.kevin.hotspot.bean.InTheatersMovieBean;
 import com.chen.kevin.hotspot.biz.movie.adapter.MovieInTheatersAdapter;
 
-public class MovieInTheatersFragment extends BaseFragment<MoviePresenter> implements IMovieContract.View, SwipeRefreshLayout.OnRefreshListener {
+public class MovieInTheatersFragment extends BaseFragment implements IMovieContract.View, SwipeRefreshLayout.OnRefreshListener {
 
     private SwipeRefreshLayout layoutRefresh;
 
 
     private RecyclerView rvList;
     private MovieInTheatersAdapter adapter;
-
+    private MoviePresenter mPresenter;
 
     public static MovieInTheatersFragment newInstance() {
         Bundle args = new Bundle();

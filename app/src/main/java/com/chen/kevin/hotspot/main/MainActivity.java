@@ -65,6 +65,7 @@ public class MainActivity extends AppCompatActivity implements IHomeContract.Vie
         fragmentList.add(fragment);
         fragmentList.add(fragment);
         fragmentList.add(userInfoFragment);
+
         layoutBottom = (BottomBarLayout) findViewById(R.id.layout_bottom);
         layoutBottom.setOnItemSelectedListener(new BottomBarLayout.OnItemSelectedListener() {
             @Override
