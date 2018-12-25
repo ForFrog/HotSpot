@@ -1,12 +1,13 @@
 package com.chen.kevin.hotspot.biz.movie.viewholder;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.chen.kevin.hotspot.R;
 import com.chen.kevin.hotspot.base.BaseViewHolder;
 import com.chen.kevin.hotspot.bean.InTheatersMovieBean;
+import com.chen.kevin.hotspot.biz.movie.MovieDetailActivity;
 
 public class MovieInTheatersVH extends BaseViewHolder<InTheatersMovieBean.SubjectsBean> {
     private TextView tv;
@@ -22,7 +23,9 @@ public class MovieInTheatersVH extends BaseViewHolder<InTheatersMovieBean.Subjec
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(v.getContext(), data.getTitle(), Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(itemView.getContext(), MovieDetailActivity.class);
+                intent.putExtra(MovieDetailActivity.EXTRA_STRING_ID, data.getId());
+                itemView.getContext().startActivity(intent);
             }
         });
     }

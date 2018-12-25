@@ -3,6 +3,7 @@ package com.chen.kevin.hotspot.net;
 
 import com.chen.kevin.hotspot.bean.Bean;
 import com.chen.kevin.hotspot.bean.InTheatersMovieBean;
+import com.chen.kevin.hotspot.bean.MovieDetailBean;
 import com.chen.kevin.hotspot.bean.Project;
 
 import java.util.List;
@@ -42,7 +43,7 @@ public interface ApiServer {
     //获取电影详情
     //https://api.douban.com/v2/movie/subject/26942674
     @GET("/v2/movie/subject/{id}")
-    Observable<InTheatersMovieBean> getMovieDetail(@Path("id") String id);
+    Observable<MovieDetailBean> getMovieDetail(@Path("id") String id);
 
     //根据名字搜索电影
     //https://api.douban.com/v2/movie/search?q=神秘巨星&start=0&count=10
