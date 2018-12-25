@@ -5,4 +5,11 @@
     <color name="colorAccent">#D81B60</color>
     <color name="maincolor">#ea6f5a</color>
     <color name="colorSubtitle">#999</color>
+
+
+    <color name="black">#333333</color>
+    <color name="grey">#666666</color>
+    <color name="grey_bg">#f2f2f2</color>
+
+
 </resources>

@@ -32,7 +32,7 @@ public class UserInfoFragment extends BaseFragment implements IMovieContract.Vie
 
     @Override
     protected int getLayoutId() {
-        return R.layout.fragment_movie_in_theaters;
+        return R.layout.fragment_user_info;
     }
 
     @Override
