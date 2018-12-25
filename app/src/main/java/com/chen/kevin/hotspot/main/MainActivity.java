@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -16,6 +15,7 @@ import android.widget.Toast;
 import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
 import com.chen.kevin.hotspot.R;
+import com.chen.kevin.hotspot.base.BaseActivity;
 import com.chen.kevin.hotspot.biz.movie.MovieInTheatersFragment;
 import com.chen.kevin.hotspot.biz.user.UserInfoFragment;
 
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class MainActivity extends AppCompatActivity implements IHomeContract.View {
+public class MainActivity extends BaseActivity implements IHomeContract.View {
 
     private static final String TAG = "MainActivity";
     private HomePresenter homePresenter;
