@@ -12,12 +12,12 @@ import com.chen.kevin.hotspot.bean.MovieDetailBean;
 
 public interface IMovieContract {
 
-    interface View extends IBaseView {
+    interface MovieInTheatersFragmentView extends IBaseView {
         void showData(InTheatersMovieBean bean);
 
     }
 
-    interface Presenter extends IBasePresenter {
+    interface MovieInTheatersFragmentPresenter extends IBasePresenter {
         void loadData();
     }
 

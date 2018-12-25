@@ -2,26 +2,15 @@ package com.chen.kevin.hotspot.biz.user;
 
 import android.arch.lifecycle.LifecycleObserver;
 import android.os.Bundle;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
 import com.chen.kevin.hotspot.R;
 import com.chen.kevin.hotspot.base.BaseFragment;
-import com.chen.kevin.hotspot.bean.InTheatersMovieBean;
-import com.chen.kevin.hotspot.biz.movie.IMovieContract;
-import com.chen.kevin.hotspot.biz.movie.MoviePresenter;
-import com.chen.kevin.hotspot.biz.movie.adapter.MovieInTheatersAdapter;
 
-public class UserInfoFragment extends BaseFragment implements IMovieContract.View, SwipeRefreshLayout.OnRefreshListener {
-
-    private SwipeRefreshLayout layoutRefresh;
+public class UserInfoFragment extends BaseFragment implements IUserContract.UserInfoFragmentView {
 
 
-    private RecyclerView rvList;
-    private MovieInTheatersAdapter adapter;
-    private MoviePresenter mPresenter;
+    private UserInfoFragmentPresenter presenter;
 
     public static UserInfoFragment newInstance() {
         Bundle args = new Bundle();
@@ -37,41 +26,28 @@ public class UserInfoFragment extends BaseFragment implements IMovieContract.Vie
 
     @Override
     protected LifecycleObserver getObserver() {
-        mPresenter = new MoviePresenter(this);
-        return mPresenter;
+        presenter = new UserInfoFragmentPresenter(this);
+        return presenter;
     }
 
     @Override
     protected void initView(View view) {
 
 
-        layoutRefresh = (SwipeRefreshLayout) view.findViewById(R.id.layout_refresh);
-        layoutRefresh.setOnRefreshListener(this);
+        presenter.loadData();
 
-
-        rvList = (RecyclerView) view.findViewById(R.id.rv_list);
-        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false);
-        rvList.setLayoutManager(layoutManager);
-        adapter = new MovieInTheatersAdapter();
-        rvList.setAdapter(adapter);
-
-        mPresenter.loadData();
-        layoutRefresh.setRefreshing(true);
 
     }
 
 
-    @Override
-    public void showData(InTheatersMovieBean bean) {
-        adapter.setData(bean.getSubjects());
 
-        if (layoutRefresh.isRefreshing()) {
-            layoutRefresh.setRefreshing(false);
-        }
+    @Override
+    public void showToast(String msg) {
+
     }
 
     @Override
-    public void onRefresh() {
-        mPresenter.loadData();
+    public void showData() {
+
     }
 }

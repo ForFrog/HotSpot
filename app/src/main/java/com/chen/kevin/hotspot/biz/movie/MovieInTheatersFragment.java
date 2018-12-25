@@ -12,14 +12,14 @@ import com.chen.kevin.hotspot.base.BaseFragment;
 import com.chen.kevin.hotspot.bean.InTheatersMovieBean;
 import com.chen.kevin.hotspot.biz.movie.adapter.MovieInTheatersAdapter;
 
-public class MovieInTheatersFragment extends BaseFragment implements IMovieContract.View, SwipeRefreshLayout.OnRefreshListener {
+public class MovieInTheatersFragment extends BaseFragment implements IMovieContract.MovieInTheatersFragmentView, SwipeRefreshLayout.OnRefreshListener {
 
     private SwipeRefreshLayout layoutRefresh;
 
 
     private RecyclerView rvList;
     private MovieInTheatersAdapter adapter;
-    private MoviePresenter mPresenter;
+    private MovieInTheatersFragmentPresenter mPresenter;
 
     public static MovieInTheatersFragment newInstance() {
         Bundle args = new Bundle();
@@ -35,7 +35,7 @@ public class MovieInTheatersFragment extends BaseFragment implements IMovieContr
 
     @Override
     protected LifecycleObserver getObserver() {
-        mPresenter = new MoviePresenter(this);
+        mPresenter = new MovieInTheatersFragmentPresenter(this);
         return mPresenter;
     }
 
@@ -71,5 +71,10 @@ public class MovieInTheatersFragment extends BaseFragment implements IMovieContr
     @Override
     public void onRefresh() {
         mPresenter.loadData();
+    }
+
+    @Override
+    public void showToast(String msg) {
+
     }
 }

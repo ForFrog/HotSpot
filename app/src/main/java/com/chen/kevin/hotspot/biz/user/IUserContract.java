@@ -11,13 +11,13 @@ import com.chen.kevin.hotspot.bean.InTheatersMovieBean;
 
 public interface IUserContract {
 
-    interface View extends IBaseView {
+    interface UserInfoFragmentView extends IBaseView {
 
         void showData();
 
     }
 
-    interface Presenter extends IBasePresenter {
+    interface UserInfoFragmentPresenter extends IBasePresenter {
 
         void loadData();
 

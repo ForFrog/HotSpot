@@ -1,5 +1,6 @@
 package com.chen.kevin.hotspot.biz.movie;
 
+import android.arch.lifecycle.LifecycleObserver;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
@@ -29,12 +30,18 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
 
         id = getIntent().getStringExtra(EXTRA_STRING_ID);
 
-        presenter = new MovieDetailActivityPresenter(this);
+
         presenter.loadData(id);
 
         tvTitle = (TextView) findViewById(R.id.tv_title);
         ivCover = (ImageView) findViewById(R.id.iv_cover);
 
+    }
+
+    @Override
+    protected LifecycleObserver getObserver() {
+        presenter = new MovieDetailActivityPresenter(this);
+        return presenter;
     }
 
     @Override
@@ -45,5 +52,10 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
         if (!TextUtils.isEmpty(largeCover)) {
             ImageMgr.getInstance().load(this, largeCover, ivCover);
         }
+    }
+
+    @Override
+    public void showToast(String msg) {
+
     }
 }

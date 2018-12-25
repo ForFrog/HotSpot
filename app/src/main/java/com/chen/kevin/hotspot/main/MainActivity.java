@@ -1,5 +1,6 @@
 package com.chen.kevin.hotspot.main;
 
+import android.arch.lifecycle.LifecycleObserver;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
@@ -78,6 +79,11 @@ public class MainActivity extends BaseActivity implements IHomeContract.View {
 
         homePresenter = new HomePresenter(this);
         homePresenter.getListData();
+    }
+
+    @Override
+    protected LifecycleObserver getObserver() {
+        return null;
     }
 
 
