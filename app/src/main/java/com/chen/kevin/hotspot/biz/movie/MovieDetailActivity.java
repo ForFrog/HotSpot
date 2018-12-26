@@ -1,18 +1,22 @@
 package com.chen.kevin.hotspot.biz.movie;
 
 import android.arch.lifecycle.LifecycleObserver;
+import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.request.target.SimpleTarget;
@@ -27,9 +31,16 @@ import com.chen.kevin.hotspot.widget.decoration.SpaceItemDecoration;
 
 import java.util.List;
 
-public class MovieDetailActivity extends BaseActivity implements IMovieContract.MovieDetailActivityView {
+public class MovieDetailActivity extends BaseActivity implements IMovieContract.MovieDetailActivityView, View.OnClickListener {
     public static final String EXTRA_STRING_ID = "extra_string_id";
     private static final String TAG = "MovieDetailActivity";
+
+    private RelativeLayout rlBar;
+    private ImageView ivBarLeft;
+    private TextView tvBarTitle;
+
+    private NestedScrollView svScroll;
+
 
     private LinearLayout llBg;
     private TextView tvTitle;
@@ -72,7 +83,37 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     }
 
     private void initView() {
+        rlBar = (RelativeLayout) findViewById(R.id.rl_bar);
+        ivBarLeft = (ImageView) findViewById(R.id.iv_bar_left);
+        ivBarLeft.setOnClickListener(this);
+        tvBarTitle = (TextView) findViewById(R.id.tv_bar_title);
+        tvBarTitle.setText("电影详情");
 
+        final int height = rlBar.getLayoutParams().height;
+        svScroll = (NestedScrollView) findViewById(R.id.sv_scroll);
+        svScroll.setOnScrollChangeListener(new NestedScrollView.OnScrollChangeListener() {
+
+            // 将透明度声明成局部变量用于判断
+            int alpha = 0;
+            float scale = 0;
+
+            @Override
+            public void onScrollChange(NestedScrollView nestedScrollView, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                if (scrollY <= height) {
+                    scale = (float) scrollY / height;
+                    alpha = (int) (255 * scale);
+                    // 随着滑动距离改变透明度
+                    // Log.e("al=","="+alpha);
+                    rlBar.setBackgroundColor(Color.argb(alpha, 255, 255, 255));
+                } else {
+                    // 防止频繁重复设置相同的值影响性能
+                    if (alpha < 255) {
+                        alpha = 255;
+                        rlBar.setBackgroundColor(Color.argb(alpha, 255, 255, 255));
+                    }
+                }
+            }
+        });
         llBg = (LinearLayout) findViewById(R.id.ll_bg);
         tvTitle = (TextView) findViewById(R.id.tv_title);
         ivCover = (ImageView) findViewById(R.id.iv_cover);
@@ -160,5 +201,14 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     @Override
     public void showToast(String msg) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.iv_bar_left:
+                finish();
+                break;
+        }
     }
 }
