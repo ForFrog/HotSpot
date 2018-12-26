@@ -9,7 +9,18 @@
 
     <color name="black">#333333</color>
     <color name="grey">#666666</color>
+    <color name="white">#ffffff</color>
     <color name="grey_bg">#f2f2f2</color>
+    <color name="bg_transparent_grey">#88666666</color>
+    <color name="bg_transparent_black">#4d333333</color>
 
+
+    <!--字体颜色 前缀font-->
+    <color name="font_white">#ffffff</color>
+    <color name="font_gray">#333333</color>
+    <color name="font_gray_light">#666666</color>
+    <color name="font_gray_lite">#999999</color>
+    <color name="font_red">#ff444a</color>
+    <color name="font_orange">#ffa703</color>
 
 </resources>
