@@ -13,6 +13,9 @@ import com.chen.kevin.hotspot.biz.movie.viewholder.MovieInTheatersVH;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 热映
+ */
 public class MovieInTheatersAdapter extends RecyclerView.Adapter<MovieInTheatersVH> {
     private List<InTheatersMovieBean.SubjectsBean> data = new ArrayList<>();
 

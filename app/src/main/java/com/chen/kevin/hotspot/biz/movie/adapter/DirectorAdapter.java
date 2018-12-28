@@ -13,6 +13,9 @@ import com.chen.kevin.hotspot.biz.movie.viewholder.DirectorVH;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 导演
+ */
 public class DirectorAdapter extends RecyclerView.Adapter<DirectorVH> {
     private List<MovieDetailBean.DirectorsBean> data = new ArrayList<>();
 

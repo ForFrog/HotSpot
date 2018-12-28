@@ -13,6 +13,9 @@ import com.chen.kevin.hotspot.biz.movie.viewholder.CastsVH;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 演员
+ */
 public class CastsAdapter extends RecyclerView.Adapter<CastsVH> {
     private List<MovieDetailBean.CastsBean> data = new ArrayList<>();
 

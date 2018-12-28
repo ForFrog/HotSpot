@@ -57,6 +57,7 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     private TextView tvGenres;
     private RecyclerView rvCasts;
     private RecyclerView rvDirectors;
+    private TextView tvExpand;
 
 
     private String id;
@@ -101,15 +102,15 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
             public void onScrollChange(NestedScrollView nestedScrollView, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
                 if (scrollY <= height) {
                     scale = (float) scrollY / height;
-                    alpha = (int) (255 * scale);
+                    alpha = (int) (255 * scale * 0.3);
                     // 随着滑动距离改变透明度
                     // Log.e("al=","="+alpha);
-                    rlBar.setBackgroundColor(Color.argb(alpha, 255, 255, 255));
+                    rlBar.setBackgroundColor(Color.argb(alpha, 33, 33, 33));
                 } else {
                     // 防止频繁重复设置相同的值影响性能
                     if (alpha < 255) {
-                        alpha = 255;
-                        rlBar.setBackgroundColor(Color.argb(alpha, 255, 255, 255));
+                        alpha = (int) (255 * 0.3);
+                        rlBar.setBackgroundColor(Color.argb(alpha, 33, 33, 33));
                     }
                 }
             }
@@ -145,6 +146,10 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
         rvDirectors.addItemDecoration(itemDecoration);
         directorAdapter = new DirectorAdapter();
         rvDirectors.setAdapter(directorAdapter);
+
+
+        tvExpand = (TextView) findViewById(R.id.tv_expand);
+        tvExpand.setOnClickListener(this);
     }
 
     @Override
@@ -156,7 +161,14 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
         } else {
             tvOriginalTitle.setText(bean.getOriginal_title() + "(" + bean.getYear() + ")");
         }
+
+
         tvSummary.setText(bean.getSummary());
+        if (tvSummary.getLineCount() > 3) {
+            tvSummary.setMaxLines(3);
+            tvSummary.setEllipsize(TextUtils.TruncateAt.END);
+        }
+
         tvAverage.setText(String.valueOf(bean.getRating().getAverage()));
         tvStars.setText(String.valueOf(bean.getRating().getStars()));
         tvReviewsCount.setText(String.valueOf(bean.getReviews_count()));
@@ -208,6 +220,16 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
         switch (v.getId()) {
             case R.id.iv_bar_left:
                 finish();
+                break;
+            case R.id.tv_expand:
+                if (tvSummary.getMaxLines() == 3) {
+                    tvSummary.setMaxLines(Integer.MAX_VALUE);
+                    tvExpand.setText("收起");
+                } else {
+                    tvSummary.setMaxLines(3);
+                    tvSummary.setEllipsize(TextUtils.TruncateAt.END);
+                    tvExpand.setText("全文");
+                }
                 break;
         }
     }
