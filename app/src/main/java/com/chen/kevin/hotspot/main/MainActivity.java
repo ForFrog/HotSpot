@@ -12,8 +12,8 @@ import com.chaychan.library.BottomBarItem;
 import com.chaychan.library.BottomBarLayout;
 import com.chen.kevin.hotspot.R;
 import com.chen.kevin.hotspot.base.BaseActivity;
+import com.chen.kevin.hotspot.biz.movie.BoardFragment;
 import com.chen.kevin.hotspot.biz.movie.MovieInTheatersFragment;
-import com.chen.kevin.hotspot.biz.movie.MovieListFragment;
 import com.chen.kevin.hotspot.biz.user.UserInfoFragment;
 
 import java.util.ArrayList;
@@ -28,25 +28,28 @@ public class MainActivity extends BaseActivity implements IHomeContract.View {
     private List<Fragment> fragmentList;
     private FragmentManager fm;
     private UserInfoFragment userInfoFragment;
-    private MovieListFragment movieListFragment;
+    private BoardFragment boardFragment;
+    private MovieInTheatersFragment movieInTheatersFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        fragmentList = new ArrayList<>();
-        MovieInTheatersFragment fragment = MovieInTheatersFragment.newInstance();
-        movieListFragment = MovieListFragment.newInstance();
+        movieInTheatersFragment = MovieInTheatersFragment.newInstance();
+        boardFragment = BoardFragment.newInstance();
         userInfoFragment = UserInfoFragment.newInstance();
+
         fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.layout_fragment, fragment);
+        ft.replace(R.id.layout_fragment, movieInTheatersFragment);
         ft.commit();
 
-        fragmentList.add(fragment);
-        fragmentList.add(movieListFragment);
-        fragmentList.add(fragment);
+        fragmentList = new ArrayList<>();
+        fragmentList.add(movieInTheatersFragment);
+        fragmentList.add(boardFragment);
+        fragmentList.add(movieInTheatersFragment);
         fragmentList.add(userInfoFragment);
 
         layoutBottom = (BottomBarLayout) findViewById(R.id.layout_bottom);

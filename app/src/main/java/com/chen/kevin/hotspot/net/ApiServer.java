@@ -32,12 +32,12 @@ public interface ApiServer {
     //获取正在热映的电影
     //https://api.douban.com/v2/movie/in_theaters?city=广州&start=0&count=10
     @GET("/v2/movie/in_theaters")
-    Observable<InTheatersMovieBean> getInTheatersMovie(@Query("city") String city, @Query("start")int Query, @Query("count")int count);
+    Observable<InTheatersMovieBean> getInTheatersMovie(@Query("city") String city, @Query("start")int start, @Query("count")int count);
 
-    //获取正在热映的电影
+    //获取top250
     //https://api.douban.com/v2/movie/top250?start=0&count=10
     @GET("/v2/movie/top250")
-    Observable<InTheatersMovieBean> getTopMovie(@Query("start")int Query, @Query("count")int count);
+    Observable<InTheatersMovieBean> getTopMovie(@Query("start")int start, @Query("count")int count);
 
 
     //获取电影详情

@@ -31,7 +31,7 @@ public class MovieInTheatersFragmentPresenter implements IMovieContract.MovieInT
         //                view.dismissLoadDialog();
 
         HttpMgr.getInstance()
-                .getInTheatersMovie("广州", 0, 10, new HttpObserver<InTheatersMovieBean>() {
+                .getInTheatersMovie("广州", 0, 20, new HttpObserver<InTheatersMovieBean>() {
                     @Override
                     public void onSubscribe(Disposable d) {
                         super.onSubscribe(d);
