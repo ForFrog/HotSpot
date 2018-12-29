@@ -36,7 +36,9 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     private static final String TAG = "MovieDetailActivity";
 
     private RelativeLayout rlBar;
-    private ImageView ivBarLeft;
+    private LinearLayout layoutBarLeft;
+
+
     private TextView tvBarTitle;
 
     private NestedScrollView svScroll;
@@ -85,8 +87,9 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
 
     private void initView() {
         rlBar = (RelativeLayout) findViewById(R.id.rl_bar);
-        ivBarLeft = (ImageView) findViewById(R.id.iv_bar_left);
-        ivBarLeft.setOnClickListener(this);
+
+        layoutBarLeft = (LinearLayout) findViewById(R.id.layout_bar_left);
+        layoutBarLeft.setOnClickListener(this);
         tvBarTitle = (TextView) findViewById(R.id.tv_bar_title);
         tvBarTitle.setText("电影详情");
 
@@ -218,7 +221,7 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_bar_left:
+            case R.id.layout_bar_left:
                 finish();
                 break;
             case R.id.tv_expand:

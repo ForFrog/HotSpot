@@ -5,12 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="?attr/actionBarSize">
 
-    <ImageView
-        android:id="@+id/iv_bar_left"
+    <LinearLayout
+        android:id="@+id/layout_bar_left"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:src="@android:drawable/arrow_up_float" />
+        android:layout_height="match_parent"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <ImageView
+            android:id="@+id/iv_bar_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:src="@mipmap/nav_back" />
+    </LinearLayout>
 
     <TextView
         android:id="@+id/tv_bar_title"
