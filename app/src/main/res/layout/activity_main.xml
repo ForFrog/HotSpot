@@ -35,7 +35,7 @@
             app:iconSelected="@drawable/homeiconselected"
             app:iconWidth="@dimen/px36"
             app:itemMarginTop="@dimen/px2"
-            app:itemText="首页"
+            app:itemText="热映"
             app:itemTextSize="12sp"
             app:textColorNormal="#9e9e9e"
             app:textColorSelected="#757575" />
@@ -49,7 +49,7 @@
             app:iconSelected="@drawable/knowledgenselected"
             app:iconWidth="@dimen/px36"
             app:itemMarginTop="@dimen/px2"
-            app:itemText="体系"
+            app:itemText="榜单"
             app:itemTextSize="12sp"
             app:textColorNormal="#9e9e9e"
             app:textColorSelected="#757575" />
