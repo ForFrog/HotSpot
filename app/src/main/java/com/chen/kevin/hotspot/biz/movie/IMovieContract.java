@@ -4,6 +4,7 @@ import com.chen.kevin.hotspot.IBasePresenter;
 import com.chen.kevin.hotspot.IBaseView;
 import com.chen.kevin.hotspot.bean.InTheatersMovieBean;
 import com.chen.kevin.hotspot.bean.MovieDetailBean;
+import com.chen.kevin.hotspot.bean.Top250MovieBean;
 
 /**
  * author: fangxiaogang
@@ -29,6 +30,15 @@ public interface IMovieContract {
 
     interface MovieDetailActivityPresenter extends IBasePresenter {
         void loadData(String id);
+    }
+
+    interface TopMovieListFragmentView extends IBaseView {
+        void showData(Top250MovieBean bean);
+
+    }
+
+    interface TopMovieListFragmentPresenter extends IBasePresenter {
+        void loadData(int type);
     }
 
 

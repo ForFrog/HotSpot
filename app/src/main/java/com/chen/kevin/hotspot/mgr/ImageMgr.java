@@ -2,10 +2,12 @@ package com.chen.kevin.hotspot.mgr;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
+import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.SimpleTarget;
+import com.chen.kevin.hotspot.R;
 
 public class ImageMgr {
     private ImageMgr() {
@@ -16,9 +18,16 @@ public class ImageMgr {
     }
 
     public void load(Context context, String url, ImageView imageView) {
-        Glide.with(context)
-                .load(url)
-                .into(imageView);
+        if (TextUtils.isEmpty(url)) {
+            Glide.with(context)
+                    .load(R.mipmap.ic_launcher_round)
+                    .into(imageView);
+        } else {
+            Glide.with(context)
+                    .load(url)
+                    .into(imageView);
+        }
+
     }
 
     public void getBitmap(Context context, String url, SimpleTarget<Drawable> target) {

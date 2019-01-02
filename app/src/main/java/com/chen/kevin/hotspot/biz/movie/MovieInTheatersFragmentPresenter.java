@@ -61,8 +61,9 @@ public class MovieInTheatersFragmentPresenter implements IMovieContract.MovieInT
 
     @Override
     public void onDestroy(@NonNull LifecycleOwner owner) {
-
-        disposable.dispose();
         Log.d("max", "onDestroy: ");
+        if (disposable != null) {
+            disposable.dispose();
+        }
     }
 }

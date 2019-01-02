@@ -5,6 +5,7 @@ import com.chen.kevin.hotspot.bean.Bean;
 import com.chen.kevin.hotspot.bean.InTheatersMovieBean;
 import com.chen.kevin.hotspot.bean.MovieDetailBean;
 import com.chen.kevin.hotspot.bean.Project;
+import com.chen.kevin.hotspot.bean.Top250MovieBean;
 
 import java.util.List;
 
@@ -37,7 +38,7 @@ public interface ApiServer {
     //获取top250
     //https://api.douban.com/v2/movie/top250?start=0&count=10
     @GET("/v2/movie/top250")
-    Observable<InTheatersMovieBean> getTopMovie(@Query("start")int start, @Query("count")int count);
+    Observable<Top250MovieBean> getTopMovie(@Query("start")int start, @Query("count")int count);
 
 
     //获取电影详情

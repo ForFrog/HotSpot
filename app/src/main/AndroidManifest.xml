@@ -27,6 +27,7 @@
         </activity>
 
         <activity android:name=".biz.movie.MovieDetailActivity" />
+        <activity android:name=".biz.movie.TopMovieListActivity" />
     </application>
 
 </manifest>

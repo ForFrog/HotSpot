@@ -3,6 +3,7 @@ package com.chen.kevin.hotspot.net;
 import com.chen.kevin.hotspot.bean.InTheatersMovieBean;
 import com.chen.kevin.hotspot.bean.MovieDetailBean;
 import com.chen.kevin.hotspot.bean.Project;
+import com.chen.kevin.hotspot.bean.Top250MovieBean;
 
 import java.util.List;
 
@@ -15,18 +16,13 @@ public class HttpMgr {
 
     private final ApiServer apiServer;
 
-    //在访问HttpMethods时创建单例
-    private static class HttpMgrHolder {
-        private static final HttpMgr INSTANCE = new HttpMgr();
+    private HttpMgr() {
+        apiServer = Http.getInstance().create(ApiServer.class);
     }
 
     //获取单例
     public static HttpMgr getInstance() {
         return HttpMgrHolder.INSTANCE;
-    }
-
-    private HttpMgr() {
-        apiServer = Http.getInstance().create(ApiServer.class);
     }
 
     private void toSubscribe(Observer subscriber, Observable observable) {
@@ -48,10 +44,21 @@ public class HttpMgr {
         toSubscribe(subscriber, inTheatersMovie);
     }
 
+    public void getTop250Movie(int start, int count, Observer<Top250MovieBean> subscriber) {
+        Observable<Top250MovieBean> inTheatersMovie = apiServer.getTopMovie(start, count);
+
+        toSubscribe(subscriber, inTheatersMovie);
+    }
+
     public void getMovieDetail(String id, Observer<MovieDetailBean> subscriber) {
         Observable<MovieDetailBean> movieDetail = apiServer.getMovieDetail(id);
 
         toSubscribe(subscriber, movieDetail);
+    }
+
+    //在访问HttpMethods时创建单例
+    private static class HttpMgrHolder {
+        private static final HttpMgr INSTANCE = new HttpMgr();
     }
 
 }
