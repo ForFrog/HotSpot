@@ -1,6 +1,7 @@
 package com.chen.kevin.hotspot.biz.movie;
 
 import android.arch.lifecycle.LifecycleObserver;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TabLayout;
@@ -8,14 +9,17 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import com.chen.kevin.hotspot.R;
 import com.chen.kevin.hotspot.base.BaseFragment;
+import com.chen.kevin.hotspot.biz.SearchActivity;
 
-public class MovieListFragment extends BaseFragment {
+public class MovieListFragment extends BaseFragment implements View.OnClickListener {
     public String[] tabTitle = {"正在热映", "即将上映"};
     private TabLayout tlType;
     private ViewPager vpContent;
+    private LinearLayout llSearch;
 
 
     public static MovieListFragment newInstance() {
@@ -45,6 +49,9 @@ public class MovieListFragment extends BaseFragment {
         initViewPager();
 
         tlType.setupWithViewPager(vpContent);
+
+        llSearch = (LinearLayout) view.findViewById(R.id.ll_search);
+        llSearch.setOnClickListener(this);
     }
 
     private void initViewPager() {
@@ -82,5 +89,15 @@ public class MovieListFragment extends BaseFragment {
     @Override
     public void showToast(String msg) {
 
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.ll_search:
+                Intent intent = new Intent(getActivity(),SearchActivity.class);
+                startActivity(intent);
+                break;
+        }
     }
 }
