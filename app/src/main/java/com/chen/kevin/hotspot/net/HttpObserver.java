@@ -23,7 +23,7 @@ public class HttpObserver<T> implements Observer<T> {
     @Override
     public void onError(Throwable e) {
         if (e instanceof JsonSyntaxException) {
-            Log.e(TAG, "onError: 数据解析错误");
+            Log.e(TAG, "onError: 数据解析错误" + e.toString());
         } else {
             Log.e(TAG, "onSubscribe: show error");
         }

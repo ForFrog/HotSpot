@@ -2,6 +2,7 @@ package com.chen.kevin.hotspot.biz.movie;
 
 import com.chen.kevin.hotspot.IBasePresenter;
 import com.chen.kevin.hotspot.IBaseView;
+import com.chen.kevin.hotspot.bean.ComingSoonMovieBean;
 import com.chen.kevin.hotspot.bean.InTheatersMovieBean;
 import com.chen.kevin.hotspot.bean.MovieDetailBean;
 import com.chen.kevin.hotspot.bean.Top250MovieBean;
@@ -19,6 +20,15 @@ public interface IMovieContract {
     }
 
     interface MovieInTheatersFragmentPresenter extends IBasePresenter {
+        void loadData();
+    }
+
+    interface MovieComingSoonFragmentView extends IBaseView {
+        void showData(ComingSoonMovieBean bean);
+
+    }
+
+    interface MovieComingSoonFragmentPresenter extends IBasePresenter {
         void loadData();
     }
 

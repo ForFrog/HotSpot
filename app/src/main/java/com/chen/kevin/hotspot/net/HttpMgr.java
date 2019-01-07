@@ -1,5 +1,6 @@
 package com.chen.kevin.hotspot.net;
 
+import com.chen.kevin.hotspot.bean.ComingSoonMovieBean;
 import com.chen.kevin.hotspot.bean.InTheatersMovieBean;
 import com.chen.kevin.hotspot.bean.MovieDetailBean;
 import com.chen.kevin.hotspot.bean.Project;
@@ -42,6 +43,12 @@ public class HttpMgr {
         Observable<InTheatersMovieBean> inTheatersMovie = apiServer.getInTheatersMovie(city, start, count);
 
         toSubscribe(subscriber, inTheatersMovie);
+    }
+
+    public void getComingSoonMovie(String city, int start, int count, Observer<ComingSoonMovieBean> subscriber) {
+        Observable<ComingSoonMovieBean> comingSoonMovie = apiServer.getComingSoonMovie(city, start, count);
+
+        toSubscribe(subscriber, comingSoonMovie);
     }
 
     public void getTop250Movie(int start, int count, Observer<Top250MovieBean> subscriber) {

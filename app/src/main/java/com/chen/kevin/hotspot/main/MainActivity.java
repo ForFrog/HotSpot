@@ -13,7 +13,7 @@ import com.chaychan.library.BottomBarLayout;
 import com.chen.kevin.hotspot.R;
 import com.chen.kevin.hotspot.base.BaseActivity;
 import com.chen.kevin.hotspot.biz.movie.BoardFragment;
-import com.chen.kevin.hotspot.biz.movie.MovieInTheatersFragment;
+import com.chen.kevin.hotspot.biz.movie.MovieListFragment;
 import com.chen.kevin.hotspot.biz.user.UserInfoFragment;
 
 import java.util.ArrayList;
@@ -29,7 +29,8 @@ public class MainActivity extends BaseActivity implements IHomeContract.View {
     private FragmentManager fm;
     private UserInfoFragment userInfoFragment;
     private BoardFragment boardFragment;
-    private MovieInTheatersFragment movieInTheatersFragment;
+//    private MovieInTheatersFragment movieInTheatersFragment;
+    private MovieListFragment movieListFragment;
 
 
     @Override
@@ -37,19 +38,20 @@ public class MainActivity extends BaseActivity implements IHomeContract.View {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-        movieInTheatersFragment = MovieInTheatersFragment.newInstance();
+//        movieInTheatersFragment = MovieInTheatersFragment.newInstance();
+        movieListFragment = MovieListFragment.newInstance();
         boardFragment = BoardFragment.newInstance();
         userInfoFragment = UserInfoFragment.newInstance();
 
         fm = getSupportFragmentManager();
         FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.layout_fragment, movieInTheatersFragment);
+        ft.replace(R.id.layout_fragment, movieListFragment);
         ft.commit();
 
         fragmentList = new ArrayList<>();
-        fragmentList.add(movieInTheatersFragment);
+        fragmentList.add(movieListFragment);
         fragmentList.add(boardFragment);
-        fragmentList.add(movieInTheatersFragment);
+        fragmentList.add(movieListFragment);
         fragmentList.add(userInfoFragment);
 
         layoutBottom = (BottomBarLayout) findViewById(R.id.layout_bottom);
