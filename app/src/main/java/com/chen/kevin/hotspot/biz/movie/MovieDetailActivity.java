@@ -26,6 +26,7 @@ import com.chen.kevin.hotspot.base.BaseActivity;
 import com.chen.kevin.hotspot.bean.MovieDetailBean;
 import com.chen.kevin.hotspot.biz.movie.adapter.CastsAdapter;
 import com.chen.kevin.hotspot.biz.movie.adapter.DirectorAdapter;
+import com.chen.kevin.hotspot.biz.movie.adapter.PopularCommentAdapter;
 import com.chen.kevin.hotspot.mgr.ImageMgr;
 import com.chen.kevin.hotspot.widget.decoration.SpaceItemDecoration;
 
@@ -61,11 +62,14 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     private RecyclerView rvDirectors;
     private TextView tvExpand;
 
+    private RecyclerView rvComment;
+
 
     private String id;
     private MovieDetailActivityPresenter presenter;
     private CastsAdapter castsAdapter;
     private DirectorAdapter directorAdapter;
+    private PopularCommentAdapter popularCommentAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -153,6 +157,11 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
 
         tvExpand = (TextView) findViewById(R.id.tv_expand);
         tvExpand.setOnClickListener(this);
+
+        rvComment = (RecyclerView) findViewById(R.id.rv_comment);
+        rvComment.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        popularCommentAdapter = new PopularCommentAdapter();
+        rvComment.setAdapter(popularCommentAdapter);
     }
 
     @Override
@@ -211,6 +220,9 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
 
         castsAdapter.setData(bean.getCasts());
         directorAdapter.setData(bean.getDirectors());
+
+        popularCommentAdapter.setData(bean.getPopular_comments());
+
     }
 
     @Override
