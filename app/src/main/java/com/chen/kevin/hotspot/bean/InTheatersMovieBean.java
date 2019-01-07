@@ -4,12 +4,11 @@ import java.util.List;
 
 public class InTheatersMovieBean {
 
-
     /**
-     * count : 1
+     * count : 2
      * start : 0
-     * total : 27
-     * subjects : [{"rating":{"max":10,"average":8.2,"stars":"45","min":0},"genres":["剧情","喜剧"],"title":"无名之辈","casts":[{"alt":"https://movie.douban.com/celebrity/1274626/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1415455964.31.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1415455964.31.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1415455964.31.webp"},"name":"陈建斌","id":"1274626"},{"alt":"https://movie.douban.com/celebrity/1362973/","avatars":{"small":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1478066140.77.webp","large":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1478066140.77.webp","medium":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1478066140.77.webp"},"name":"任素汐","id":"1362973"},{"alt":"https://movie.douban.com/celebrity/1316365/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541855083.14.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541855083.14.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541855083.14.webp"},"name":"潘斌龙","id":"1316365"}],"collect_count":205008,"original_title":"无名之辈","subtype":"movie","directors":[{"alt":"https://movie.douban.com/celebrity/1326752/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541992522.36.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541992522.36.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541992522.36.webp"},"name":"饶晓志","id":"1326752"}],"year":"2018","images":{"small":"https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.webp","large":"https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.webp","medium":"https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.webp"},"alt":"https://movie.douban.com/subject/27110296/","id":"27110296"}]
+     * total : 31
+     * subjects : [{"rating":{"max":10,"average":6,"stars":"30","min":0},"genres":["剧情","喜剧"],"title":"来电狂响","casts":[{"alt":"https://movie.douban.com/celebrity/1009179/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1542346320.44.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1542346320.44.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1542346320.44.webp"},"name":"佟大为","id":"1009179"},{"alt":"https://movie.douban.com/celebrity/1319032/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1444800807.11.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1444800807.11.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1444800807.11.webp"},"name":"马丽","id":"1319032"},{"alt":"https://movie.douban.com/celebrity/1000145/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p2520.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p2520.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p2520.webp"},"name":"霍思燕","id":"1000145"}],"collect_count":50628,"original_title":"来电狂响","subtype":"movie","directors":[{"alt":"https://movie.douban.com/celebrity/1321152/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1483685290.54.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1483685290.54.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1483685290.54.webp"},"name":"于淼","id":"1321152"}],"year":"2018","images":{"small":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542268337.webp","large":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542268337.webp","medium":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542268337.webp"},"alt":"https://movie.douban.com/subject/30377703/","id":"30377703"},{"rating":{"max":10,"average":7.5,"stars":"40","min":0},"genres":["动作","科幻","冒险"],"title":"大黄蜂","casts":[{"alt":"https://movie.douban.com/celebrity/1312964/","avatars":{"small":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p20419.webp","large":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p20419.webp","medium":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p20419.webp"},"name":"海莉·斯坦菲尔德","id":"1312964"},{"alt":"https://movie.douban.com/celebrity/1044883/","avatars":{"small":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p23477.webp","large":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p23477.webp","medium":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p23477.webp"},"name":"约翰·塞纳","id":"1044883"},{"alt":"https://movie.douban.com/celebrity/1376970/","avatars":{"small":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1545624925.39.webp","large":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1545624925.39.webp","medium":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1545624925.39.webp"},"name":"小豪尔赫·兰登伯格","id":"1376970"}],"collect_count":12173,"original_title":"Bumblebee","subtype":"movie","directors":[{"alt":"https://movie.douban.com/celebrity/1305796/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1471358307.31.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1471358307.31.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1471358307.31.webp"},"name":"特拉维斯·奈特","id":"1305796"}],"year":"2018","images":{"small":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2541662397.webp","large":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2541662397.webp","medium":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2541662397.webp"},"alt":"https://movie.douban.com/subject/26394152/","id":"26394152"}]
      * title : 正在上映的电影-广州
      */
 
@@ -61,18 +60,18 @@ public class InTheatersMovieBean {
 
     public static class SubjectsBean {
         /**
-         * rating : {"max":10,"average":8.2,"stars":"45","min":0}
+         * rating : {"max":10,"average":6,"stars":"30","min":0}
          * genres : ["剧情","喜剧"]
-         * title : 无名之辈
-         * casts : [{"alt":"https://movie.douban.com/celebrity/1274626/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1415455964.31.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1415455964.31.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1415455964.31.webp"},"name":"陈建斌","id":"1274626"},{"alt":"https://movie.douban.com/celebrity/1362973/","avatars":{"small":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1478066140.77.webp","large":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1478066140.77.webp","medium":"https://img1.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1478066140.77.webp"},"name":"任素汐","id":"1362973"},{"alt":"https://movie.douban.com/celebrity/1316365/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541855083.14.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541855083.14.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541855083.14.webp"},"name":"潘斌龙","id":"1316365"}]
-         * collect_count : 205008
-         * original_title : 无名之辈
+         * title : 来电狂响
+         * casts : [{"alt":"https://movie.douban.com/celebrity/1009179/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1542346320.44.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1542346320.44.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1542346320.44.webp"},"name":"佟大为","id":"1009179"},{"alt":"https://movie.douban.com/celebrity/1319032/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1444800807.11.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1444800807.11.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1444800807.11.webp"},"name":"马丽","id":"1319032"},{"alt":"https://movie.douban.com/celebrity/1000145/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p2520.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p2520.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p2520.webp"},"name":"霍思燕","id":"1000145"}]
+         * collect_count : 50628
+         * original_title : 来电狂响
          * subtype : movie
-         * directors : [{"alt":"https://movie.douban.com/celebrity/1326752/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541992522.36.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541992522.36.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541992522.36.webp"},"name":"饶晓志","id":"1326752"}]
+         * directors : [{"alt":"https://movie.douban.com/celebrity/1321152/","avatars":{"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1483685290.54.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1483685290.54.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1483685290.54.webp"},"name":"于淼","id":"1321152"}]
          * year : 2018
-         * images : {"small":"https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.webp","large":"https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.webp","medium":"https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.webp"}
-         * alt : https://movie.douban.com/subject/27110296/
-         * id : 27110296
+         * images : {"small":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542268337.webp","large":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542268337.webp","medium":"https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542268337.webp"}
+         * alt : https://movie.douban.com/subject/30377703/
+         * id : 30377703
          */
 
         private RatingBean rating;
@@ -187,8 +186,8 @@ public class InTheatersMovieBean {
         public static class RatingBean {
             /**
              * max : 10
-             * average : 8.2
-             * stars : 45
+             * average : 6
+             * stars : 30
              * min : 0
              */
 
@@ -232,9 +231,9 @@ public class InTheatersMovieBean {
 
         public static class ImagesBean {
             /**
-             * small : https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.webp
-             * large : https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.webp
-             * medium : https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.webp
+             * small : https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542268337.webp
+             * large : https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542268337.webp
+             * medium : https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2542268337.webp
              */
 
             private String small;
@@ -268,10 +267,10 @@ public class InTheatersMovieBean {
 
         public static class CastsBean {
             /**
-             * alt : https://movie.douban.com/celebrity/1274626/
-             * avatars : {"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1415455964.31.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1415455964.31.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1415455964.31.webp"}
-             * name : 陈建斌
-             * id : 1274626
+             * alt : https://movie.douban.com/celebrity/1009179/
+             * avatars : {"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1542346320.44.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1542346320.44.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1542346320.44.webp"}
+             * name : 佟大为
+             * id : 1009179
              */
 
             private String alt;
@@ -313,9 +312,9 @@ public class InTheatersMovieBean {
 
             public static class AvatarsBean {
                 /**
-                 * small : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1415455964.31.webp
-                 * large : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1415455964.31.webp
-                 * medium : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1415455964.31.webp
+                 * small : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1542346320.44.webp
+                 * large : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1542346320.44.webp
+                 * medium : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1542346320.44.webp
                  */
 
                 private String small;
@@ -350,10 +349,10 @@ public class InTheatersMovieBean {
 
         public static class DirectorsBean {
             /**
-             * alt : https://movie.douban.com/celebrity/1326752/
-             * avatars : {"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541992522.36.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541992522.36.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541992522.36.webp"}
-             * name : 饶晓志
-             * id : 1326752
+             * alt : https://movie.douban.com/celebrity/1321152/
+             * avatars : {"small":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1483685290.54.webp","large":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1483685290.54.webp","medium":"https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1483685290.54.webp"}
+             * name : 于淼
+             * id : 1321152
              */
 
             private String alt;
@@ -395,9 +394,9 @@ public class InTheatersMovieBean {
 
             public static class AvatarsBeanX {
                 /**
-                 * small : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541992522.36.webp
-                 * large : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541992522.36.webp
-                 * medium : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1541992522.36.webp
+                 * small : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1483685290.54.webp
+                 * large : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1483685290.54.webp
+                 * medium : https://img3.doubanio.com/view/celebrity/s_ratio_celebrity/public/p1483685290.54.webp
                  */
 
                 private String small;
@@ -429,16 +428,5 @@ public class InTheatersMovieBean {
                 }
             }
         }
-    }
-
-    @Override
-    public String toString() {
-        return "InTheatersMovieBean{" +
-                "count=" + count +
-                ", start=" + start +
-                ", total=" + total +
-                ", title='" + title + '\'' +
-                ", subjects=" + subjects.size() +
-                '}';
     }
 }

@@ -2,6 +2,8 @@ package com.chen.kevin.hotspot.net;
 
 import android.util.Log;
 
+import com.google.gson.JsonSyntaxException;
+
 import io.reactivex.Observer;
 import io.reactivex.disposables.Disposable;
 
@@ -20,7 +22,11 @@ public class HttpObserver<T> implements Observer<T> {
 
     @Override
     public void onError(Throwable e) {
-        Log.d(TAG, "onSubscribe: show error");
+        if (e instanceof JsonSyntaxException) {
+            Log.e(TAG, "onError: 数据解析错误");
+        } else {
+            Log.e(TAG, "onSubscribe: show error");
+        }
     }
 
     @Override

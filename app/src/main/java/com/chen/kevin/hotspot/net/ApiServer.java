@@ -16,15 +16,6 @@ import retrofit2.http.Query;
 
 public interface ApiServer {
 
-    public static final String url_search = "/v2/movie/search";
-    public static final String url_toplist = "/v2/movie/top250";
-    public static final String url_hotlist = "/v2/movie/in_theaters";
-    public static final String url_details = "/v2/movie/subject";
-
-
-    //    @GET("api/data/Android/{count}/{index}")
-    //    Observable<Bean<List<ResultBean>>> getTopMovie(@Path("count") int count, @Path("index") int index);
-
     //项目
     //http://www.wanandroid.com/project/tree/json
     @GET("/project/tree/json")

@@ -48,13 +48,13 @@ public class MovieInTheatersFragmentPresenter implements IMovieContract.MovieInT
                     @Override
                     public void onError(Throwable e) {
                         super.onError(e);
-                        //                view.showToast("网络异常");
+                        view.showToast("网络异常");
                     }
 
                     @Override
                     public void onComplete() {
                         super.onComplete();
-                        //                view.dismissLoadDialog();
+
                     }
                 });
     }
