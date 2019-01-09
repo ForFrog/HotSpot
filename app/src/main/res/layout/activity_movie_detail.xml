@@ -74,6 +74,27 @@
                         android:textColor="@color/font_white"
                         tools:text="喜剧" />
 
+                    <TextView
+                        android:id="@+id/tv_tag"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/font_white"
+                        tools:text="标签" />
+
+                    <TextView
+                        android:id="@+id/tv_pub_date"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/font_white"
+                        tools:text="上映时间" />
+
+                    <TextView
+                        android:id="@+id/tv_durations"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/font_white"
+                        tools:text="片长" />
+
 
                 </LinearLayout>
 
@@ -190,6 +211,27 @@
                         tools:text="1444" />
 
                 </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="评分人数:"
+                        android:textColor="@color/font_white" />
+
+
+                    <TextView
+                        android:id="@+id/tv_ratings_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/font_white"
+                        tools:text="1444" />
+
+                </LinearLayout>
             </LinearLayout>
 
             <TextView
@@ -251,6 +293,32 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/rv_casts"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="剧照"
+                    android:textColor="@color/font_white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:text="全部"
+                    android:textColor="@color/font_white" />
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_photos"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
 

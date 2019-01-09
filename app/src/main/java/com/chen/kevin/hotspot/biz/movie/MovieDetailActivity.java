@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.graphics.Palette;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -26,8 +27,10 @@ import com.chen.kevin.hotspot.base.BaseActivity;
 import com.chen.kevin.hotspot.bean.MovieDetailBean;
 import com.chen.kevin.hotspot.biz.movie.adapter.CastsAdapter;
 import com.chen.kevin.hotspot.biz.movie.adapter.DirectorAdapter;
+import com.chen.kevin.hotspot.biz.movie.adapter.MovieDetailPhotoAdapter;
 import com.chen.kevin.hotspot.biz.movie.adapter.PopularCommentAdapter;
 import com.chen.kevin.hotspot.mgr.ImageMgr;
+import com.chen.kevin.hotspot.util.StringUtils;
 import com.chen.kevin.hotspot.widget.decoration.SpaceItemDecoration;
 
 import java.util.List;
@@ -62,6 +65,15 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     private RecyclerView rvDirectors;
     private TextView tvExpand;
 
+    private TextView tvTag;
+    private TextView tvPubDate;
+    private TextView tvDurations;
+    private TextView tvRatingsCount;
+
+    private RecyclerView rvPhotos;
+
+
+
     private RecyclerView rvComment;
 
 
@@ -70,6 +82,7 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     private CastsAdapter castsAdapter;
     private DirectorAdapter directorAdapter;
     private PopularCommentAdapter popularCommentAdapter;
+    private MovieDetailPhotoAdapter movieDetailPhotoAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -162,6 +175,17 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
         rvComment.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         popularCommentAdapter = new PopularCommentAdapter();
         rvComment.setAdapter(popularCommentAdapter);
+
+
+        rvPhotos = (RecyclerView) findViewById(R.id.rv_photos);
+        rvPhotos.setLayoutManager(new GridLayoutManager(this,2, LinearLayoutManager.HORIZONTAL, false));
+        movieDetailPhotoAdapter = new MovieDetailPhotoAdapter();
+        rvPhotos.setAdapter(movieDetailPhotoAdapter);
+
+        tvTag = (TextView) findViewById(R.id.tv_tag);
+        tvPubDate = (TextView) findViewById(R.id.tv_pub_date);
+        tvDurations = (TextView) findViewById(R.id.tv_durations);
+        tvRatingsCount = (TextView) findViewById(R.id.tv_ratings_count);
     }
 
     @Override
@@ -218,12 +242,32 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
         sbGenre.deleteCharAt(sbGenre.length() - 1);
         tvGenres.setText(sbGenre.toString());
 
+
+        List<String> tags = bean.getTags();
+        StringBuilder sbTag = new StringBuilder();
+        for (String tag : tags) {
+            sbTag.append(tag).append("/");
+        }
+        sbTag.deleteCharAt(sbCountry.length() - 1);
+        tvTag.setText(sbTag);
+
+        tvRatingsCount.setText(String.valueOf(bean.getRatings_count()));
+
+        StringBuilder sbDuration = StringUtils.formatStringList(bean.getDurations());
+        tvDurations.setText(sbDuration);
+
+        StringBuilder sbPubDate = StringUtils.formatStringList(bean.getPubdates());
+        tvPubDate.setText(sbPubDate);
+
         castsAdapter.setData(bean.getCasts());
         directorAdapter.setData(bean.getDirectors());
 
         popularCommentAdapter.setData(bean.getPopular_comments());
 
+        movieDetailPhotoAdapter.setData(bean.getPhotos());
+
     }
+
 
     @Override
     public void showToast(String msg) {

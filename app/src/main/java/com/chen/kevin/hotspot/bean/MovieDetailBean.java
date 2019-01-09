@@ -64,18 +64,18 @@ public class MovieDetailBean {
      */
 
     private RatingBean rating;
-    private int reviews_count;
-    private int wish_count;
-    private String original_title;
-    private int collect_count;
-    private ImagesBean images;
+    private int reviews_count;//影评
+    private int wish_count;//想看
+    private String original_title;//原名
+    private int collect_count;//收藏数
+    private ImagesBean images;//封面
     private String douban_site;
-    private String year;
+    private String year;//上映年份
     private String alt;
     private String id;
     private String mobile_url;
     private int photos_count;
-    private String pubdate;
+    private String pubdate;//上映时间 2019-01-04
     private String title;
     private Object do_count;
     private boolean has_video;
@@ -89,29 +89,29 @@ public class MovieDetailBean {
     private boolean has_ticket;
     private Object current_season;
     private String mainland_pubdate;
-    private String summary;
-    private String subtype;
-    private int comments_count;
-    private int ratings_count;
+    private String summary;//简介
+    private String subtype;//频道
+    private int comments_count;//热评数
+    private int ratings_count;//评分人数
     private List<VideosBean> videos;
     private List<String> blooper_urls;
-    private List<PopularCommentsBean> popular_comments;
-    private List<String> languages;
+    private List<PopularCommentsBean> popular_comments;//热评
+    private List<String> languages;//语言
     private List<WritersBean> writers;
-    private List<String> pubdates;
-    private List<String> tags;
-    private List<String> durations;
-    private List<String> genres;
-    private List<TrailersBean> trailers;
+    private List<String> pubdates;//上映时间 "2018-12-21(美国)", "2019-01-04(中国大陆)"
+    private List<String> tags;//标签
+    private List<String> durations;//时长
+    private List<String> genres;//类型
+    private List<TrailersBean> trailers;//预告片
     private List<String> trailer_urls;
-    private List<BloopersBean> bloopers;
+    private List<BloopersBean> bloopers;//花絮
     private List<String> clip_urls;
-    private List<CastsBean> casts;
+    private List<CastsBean> casts;//演员
     private List<String> countries;
-    private List<PhotosBean> photos;
+    private List<PhotosBean> photos;//剧照
     private List<ClipsBean> clips;
     private List<DirectorsBean> directors;
-    private List<PopularReviewsBean> popular_reviews;
+    private List<PopularReviewsBean> popular_reviews;//影评
     private List<String> aka;
 
     public RatingBean getRating() {
@@ -524,7 +524,7 @@ public class MovieDetailBean {
          */
 
         private int max;
-        private double average;
+        private double average;//评分
         private DetailsBean details;
         private String stars;
         private int min;
@@ -765,7 +765,7 @@ public class MovieDetailBean {
         private AuthorBean author;
         private String subject_id;
         private String content;
-        private String created_at;
+        private String created_at;//创建时间
         private String id;
 
         public RatingBeanX getRating() {
