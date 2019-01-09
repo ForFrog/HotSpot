@@ -28,6 +28,7 @@ import com.chen.kevin.hotspot.bean.MovieDetailBean;
 import com.chen.kevin.hotspot.biz.movie.adapter.CastsAdapter;
 import com.chen.kevin.hotspot.biz.movie.adapter.DirectorAdapter;
 import com.chen.kevin.hotspot.biz.movie.adapter.MovieDetailPhotoAdapter;
+import com.chen.kevin.hotspot.biz.movie.adapter.MovieDetailTrailerAdapter;
 import com.chen.kevin.hotspot.biz.movie.adapter.PopularCommentAdapter;
 import com.chen.kevin.hotspot.mgr.ImageMgr;
 import com.chen.kevin.hotspot.util.StringUtils;
@@ -72,6 +73,9 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
 
     private RecyclerView rvPhotos;
 
+    private RecyclerView rvTrailer;
+
+
 
 
     private RecyclerView rvComment;
@@ -83,6 +87,7 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     private DirectorAdapter directorAdapter;
     private PopularCommentAdapter popularCommentAdapter;
     private MovieDetailPhotoAdapter movieDetailPhotoAdapter;
+    private MovieDetailTrailerAdapter movieDetailTrailerAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -178,7 +183,7 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
 
 
         rvPhotos = (RecyclerView) findViewById(R.id.rv_photos);
-        rvPhotos.setLayoutManager(new GridLayoutManager(this,2, LinearLayoutManager.HORIZONTAL, false));
+        rvPhotos.setLayoutManager(new GridLayoutManager(this, 2, LinearLayoutManager.HORIZONTAL, false));
         movieDetailPhotoAdapter = new MovieDetailPhotoAdapter();
         rvPhotos.setAdapter(movieDetailPhotoAdapter);
 
@@ -186,6 +191,12 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
         tvPubDate = (TextView) findViewById(R.id.tv_pub_date);
         tvDurations = (TextView) findViewById(R.id.tv_durations);
         tvRatingsCount = (TextView) findViewById(R.id.tv_ratings_count);
+
+
+        rvTrailer = (RecyclerView) findViewById(R.id.rv_trailer);
+        rvTrailer.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
+        movieDetailTrailerAdapter = new MovieDetailTrailerAdapter();
+        rvTrailer.setAdapter(movieDetailTrailerAdapter);
     }
 
     @Override
@@ -266,6 +277,7 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
 
         movieDetailPhotoAdapter.setData(bean.getPhotos());
 
+        movieDetailTrailerAdapter.setData(bean.getTrailers());
     }
 
 
