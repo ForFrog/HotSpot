@@ -33,18 +33,31 @@ public class TrailerVH extends BaseViewHolder<MovieDetailBean.TrailersBean> impl
         tvTrailerTitle.setText(data.getTitle());
 
         ivTrailerImg.setOnClickListener(this);
+        vvVideo.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
-        if (data != null) {
-            vvVideo.setVideoPath(data.getResource_url());
-            vvVideo.setVisibility(View.VISIBLE);
-            if (!vvVideo.isPlaying()) {
-                vvVideo.start();
-            } else {
-                vvVideo.pause();
-            }
+        switch (v.getId()) {
+            case R.id.iv_trailer_img:
+                if (data != null) {
+                    vvVideo.setVideoPath(data.getResource_url());
+                    vvVideo.setVisibility(View.VISIBLE);
+                    ivTrailerImg.setVisibility(View.INVISIBLE);
+                    vvVideo.start();
+
+                }
+
+                break;
+            case R.id.vv_video:
+
+                if (!vvVideo.isPlaying()) {
+                    vvVideo.start();
+                } else {
+                    vvVideo.pause();
+                }
+                break;
         }
+
     }
 }
