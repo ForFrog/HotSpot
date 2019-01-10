@@ -525,7 +525,7 @@ public class MovieDetailBean {
 
         private int max;
         private double average;//评分
-        private DetailsBean details;
+        private DetailsBean details;//1-5星人数
         private String stars;
         private int min;
 

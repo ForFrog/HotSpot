@@ -7,6 +7,10 @@ import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.NestedScrollView;
 import android.support.v7.graphics.Palette;
 import android.support.v7.widget.GridLayoutManager;
@@ -24,6 +28,7 @@ import com.bumptech.glide.request.target.SimpleTarget;
 import com.bumptech.glide.request.transition.Transition;
 import com.chen.kevin.hotspot.R;
 import com.chen.kevin.hotspot.base.BaseActivity;
+import com.chen.kevin.hotspot.base.EmptyFragment;
 import com.chen.kevin.hotspot.bean.MovieDetailBean;
 import com.chen.kevin.hotspot.biz.movie.adapter.CastsAdapter;
 import com.chen.kevin.hotspot.biz.movie.adapter.DirectorAdapter;
@@ -39,7 +44,7 @@ import java.util.List;
 public class MovieDetailActivity extends BaseActivity implements IMovieContract.MovieDetailActivityView, View.OnClickListener {
     public static final String EXTRA_STRING_ID = "extra_string_id";
     private static final String TAG = "MovieDetailActivity";
-
+    public String[] tabTitle = {"影评", "话题", "讨论"};
     private RelativeLayout rlBar;
     private LinearLayout layoutBarLeft;
 
@@ -74,11 +79,10 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     private RecyclerView rvPhotos;
 
     private RecyclerView rvTrailer;
-
-
-
-
     private RecyclerView rvComment;
+
+    private TabLayout tabBottomSheet;
+    private ViewPager vpContent;
 
 
     private String id;
@@ -89,6 +93,8 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     private MovieDetailPhotoAdapter movieDetailPhotoAdapter;
     private MovieDetailTrailerAdapter movieDetailTrailerAdapter;
 
+    private PopularReviewsFragment popularReviewsFragment;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,8 +104,10 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
 
         initView();
 
+        initBottomSheet();
 
     }
+
 
     @Override
     protected LifecycleObserver getObserver() {
@@ -199,6 +207,58 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
         rvTrailer.setAdapter(movieDetailTrailerAdapter);
     }
 
+
+    private void initBottomSheet() {
+        tabBottomSheet = (TabLayout) findViewById(R.id.tab_bottom_sheet);
+        vpContent = (ViewPager) findViewById(R.id.vp_content);
+        initViewPager();
+
+        tabBottomSheet.setupWithViewPager(vpContent);
+    }
+
+    private void initViewPager() {
+
+        vpContent.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
+
+
+            @Override
+            public Fragment getItem(int position) {
+                Fragment fragment;
+                switch (position) {
+                    case 0:
+                        popularReviewsFragment = PopularReviewsFragment.newInstance();
+                        fragment = popularReviewsFragment;
+                        break;
+                    case 1:
+                        fragment = EmptyFragment.newInstance();
+                        break;
+
+                    case 2:
+                        fragment = EmptyFragment.newInstance();
+                        break;
+
+                    default:
+                        fragment = EmptyFragment.newInstance();
+                        break;
+                }
+                return fragment;
+            }
+
+            @Override
+            public int getCount() {
+                return tabTitle.length;
+            }
+
+            @Nullable
+            @Override
+            public CharSequence getPageTitle(int position) {
+                return tabTitle[position];
+            }
+
+        });
+    }
+
+
     @Override
     public void showData(MovieDetailBean bean) {
         Log.d(TAG, "showData: " + bean);
@@ -278,6 +338,11 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
         movieDetailPhotoAdapter.setData(bean.getPhotos());
 
         movieDetailTrailerAdapter.setData(bean.getTrailers());
+
+        if (popularReviewsFragment != null) {
+            popularReviewsFragment.intData(bean.getPopular_reviews());
+        }
+
     }
 
 
