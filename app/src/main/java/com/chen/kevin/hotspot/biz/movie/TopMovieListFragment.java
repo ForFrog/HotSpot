@@ -56,8 +56,14 @@ public class TopMovieListFragment extends BaseFragment implements IMovieContract
         Bundle arg = getArguments();
         if (arg != null) {
             type = arg.getInt(EXTRA_INT_TYPE);
-            presenter.loadData(type);
+
         }
+    }
+
+    @Override
+    protected void onLazyLoad() {
+        super.onLazyLoad();
+        presenter.loadData(type);
     }
 
     @Override

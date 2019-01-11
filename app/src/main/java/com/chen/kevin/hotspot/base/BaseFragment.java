@@ -21,12 +21,14 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
 
     private View mRootView;
 
+    private boolean isPrepared;
+    private boolean alreadLoad;
 
-    protected abstract int getLayoutId();
-
-    protected abstract LifecycleObserver getObserver();
-
-    protected abstract void initView(View view);
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        lazyLoad();
+    }
 
 
     @Override
@@ -36,8 +38,6 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
         if (observer != null) {
             getLifecycle().addObserver(observer);
         }
-
-        attachView();
     }
 
     @Nullable
@@ -51,25 +51,43 @@ public abstract class BaseFragment extends Fragment implements IBaseView {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         initView(mRootView);
+
+
+        lazyLoad();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        isPrepared=true;
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
-        detachView();
+
+    }
+
+    private void lazyLoad() {
+        if (getUserVisibleHint() && isPrepared && !alreadLoad) {
+            onLazyLoad();
+            alreadLoad = true;
+        }
+
     }
 
     /**
-     * 贴上view
+     * 懒加载
      */
-    private void attachView() {
+    protected void onLazyLoad() {
     }
 
-    /**
-     * 分离view
-     */
-    private void detachView() {
+    protected abstract int getLayoutId();
 
-    }
+    protected abstract LifecycleObserver getObserver();
+
+    protected abstract void initView(View view);
+
 }

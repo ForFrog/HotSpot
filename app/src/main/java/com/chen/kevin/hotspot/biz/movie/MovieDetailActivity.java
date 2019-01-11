@@ -217,7 +217,7 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     }
 
     private void initViewPager() {
-
+        vpContent.setOffscreenPageLimit(2);
         vpContent.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
 
 
