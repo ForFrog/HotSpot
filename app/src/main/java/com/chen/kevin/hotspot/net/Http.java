@@ -29,10 +29,10 @@ public class Http {
             public void log(@NonNull String message) {
                 try {
                     String text = URLDecoder.decode(message, "utf-8");
-                    Log.w("Http log", text);
+                    Log.w("Http log ", text);
                 } catch (UnsupportedEncodingException e) {
                     e.printStackTrace();
-                    Log.e("Http log", message);
+                    Log.e("Http log unDecode ", message);
                 }
             }
         });

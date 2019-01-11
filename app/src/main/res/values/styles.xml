@@ -14,4 +14,10 @@
         <item name="android:background">@color/bg_grey</item>
     </style>
 
+    <style name="style_line_1px">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/bg_transparent_white</item>
+    </style>
+
 </resources>

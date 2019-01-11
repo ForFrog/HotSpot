@@ -14,6 +14,7 @@
     <color name="bg_grey">#f2f2f2</color>
     <color name="bg_transparent_grey">#88666666</color>
     <color name="bg_transparent_black">#4d333333</color>
+    <color name="bg_transparent_white">#4dffffff</color>
 
 
     <!--字体颜色 前缀font-->
