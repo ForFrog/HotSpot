@@ -40,7 +40,7 @@ public class PopularCommentVH extends BaseViewHolder<MovieDetailBean.PopularComm
 
         tvName.setText(data.getAuthor().getName());
         tvComment.setText(data.getContent());
-        ImageMgr.getInstance().load(itemView.getContext(), data.getAuthor().getAvatar(), ivAvatar);
+        ImageMgr.getInstance().loadRoundImg(itemView.getContext(), data.getAuthor().getAvatar(), ivAvatar);
         tvTime.setText(data.getCreated_at());
         tvUseful.setText(String.valueOf(data.getUseful_count()));
     }

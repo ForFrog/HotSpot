@@ -35,7 +35,7 @@ public class PopularReviewVH extends BaseViewHolder<MovieDetailBean.PopularRevie
         tvName.setText(data.getAuthor().getName());
         tvComment.setText(data.getSummary());
         tvTitle.setText(data.getTitle());
-        ImageMgr.getInstance().load(itemView.getContext(), data.getAuthor().getAvatar(), ivAverage);
+        ImageMgr.getInstance().loadRoundImg(itemView.getContext(), data.getAuthor().getAvatar(), ivAverage);
     }
 
 }

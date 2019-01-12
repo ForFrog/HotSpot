@@ -6,6 +6,8 @@ import android.text.TextUtils;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.chen.kevin.hotspot.R;
 
@@ -25,6 +27,23 @@ public class ImageMgr {
         } else {
             Glide.with(context)
                     .load(url)
+                    .into(imageView);
+        }
+
+    }
+
+    public void loadRoundImg(Context context, String url, ImageView imageView) {
+        RequestOptions requestOptions = RequestOptions.circleCropTransform();
+
+        if (TextUtils.isEmpty(url)) {
+            Glide.with(context)
+                    .load(R.mipmap.ic_launcher_round)
+                    .apply(RequestOptions.bitmapTransform(new CircleCrop()))
+                    .into(imageView);
+        } else {
+            Glide.with(context)
+                    .load(url)
+                    .apply(RequestOptions.bitmapTransform(new CircleCrop()))
                     .into(imageView);
         }
 
