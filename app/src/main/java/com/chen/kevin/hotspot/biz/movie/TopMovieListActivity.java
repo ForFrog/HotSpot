@@ -95,7 +95,7 @@ public class TopMovieListActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void initViewPager() {
-        vpContent.setOffscreenPageLimit(100);
+        vpContent.setOffscreenPageLimit(4);
 
         vpContent.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
             @Override

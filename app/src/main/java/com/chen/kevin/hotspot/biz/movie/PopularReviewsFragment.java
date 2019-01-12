@@ -2,6 +2,7 @@ package com.chen.kevin.hotspot.biz.movie;
 
 import android.arch.lifecycle.LifecycleObserver;
 import android.os.Bundle;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -10,6 +11,7 @@ import com.chen.kevin.hotspot.R;
 import com.chen.kevin.hotspot.base.BaseFragment;
 import com.chen.kevin.hotspot.bean.MovieDetailBean;
 import com.chen.kevin.hotspot.biz.movie.adapter.PopularReviewAdapter;
+import com.chen.kevin.hotspot.widget.decoration.DrawableItemDecoration;
 
 import java.util.List;
 
@@ -40,11 +42,15 @@ public class PopularReviewsFragment extends BaseFragment {
     protected void initView(View view) {
         rvContent = (RecyclerView) view.findViewById(R.id.rv_content);
         rvContent.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL, false));
+
+        DrawableItemDecoration itemDecoration = new DrawableItemDecoration(rvContent.getContext(), DividerItemDecoration.VERTICAL);
+        itemDecoration.setDrawable(getResources().getDrawable(R.drawable.shape_item_divider));
+        rvContent.addItemDecoration(itemDecoration);
         adapter = new PopularReviewAdapter();
         rvContent.setAdapter(adapter);
     }
 
-    public void intData( List<MovieDetailBean.PopularReviewsBean> popularReviews) {
+    public void intData(List<MovieDetailBean.PopularReviewsBean> popularReviews) {
         adapter.setData(popularReviews);
     }
 
