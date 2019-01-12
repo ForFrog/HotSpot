@@ -39,8 +39,6 @@ import com.chen.kevin.hotspot.mgr.ImageMgr;
 import com.chen.kevin.hotspot.util.StringUtils;
 import com.chen.kevin.hotspot.widget.decoration.SpaceItemDecoration;
 
-import java.util.List;
-
 public class MovieDetailActivity extends BaseActivity implements IMovieContract.MovieDetailActivityView, View.OnClickListener {
     public static final String EXTRA_STRING_ID = "extra_string_id";
     private static final String TAG = "MovieDetailActivity";
@@ -276,15 +274,23 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
             tvSummary.setEllipsize(TextUtils.TruncateAt.END);
         }
 
-        tvAverage.setText(String.valueOf(bean.getRating().getAverage()));
+        //评分
+        if (bean.getRating().getAverage() == 0) {
+            tvAverage.setText("暂无评分");
+        } else {
+            tvAverage.setText(String.valueOf(bean.getRating().getAverage()));
+        }
+
         tvStars.setText(String.valueOf(bean.getRating().getStars()));
         tvReviewsCount.setText(String.valueOf(bean.getReviews_count()));
-        tvWishCount.setText(String.valueOf(bean.getWish_count()));
-        tvCollectCount.setText(String.valueOf(bean.getCollect_count()));
+
+
+        tvWishCount.setText(StringUtils.formatNumber(bean.getWish_count()));
+        tvCollectCount.setText(StringUtils.formatNumber(bean.getCollect_count()));
+
         String largeCover = bean.getImages().getLarge();
-        if (!TextUtils.isEmpty(largeCover)) {
-            ImageMgr.getInstance().load(this, largeCover, ivCover);
-        }
+        ImageMgr.getInstance().load(this, largeCover, ivCover);
+
 
         ImageMgr.getInstance().getBitmap(this, largeCover, new SimpleTarget<Drawable>() {
             @Override
@@ -297,29 +303,16 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
             }
         });
 
-        List<String> countries = bean.getCountries();
-        StringBuilder sbCountry = new StringBuilder();
-        for (String country : countries) {
-            sbCountry.append(country).append("/");
-        }
-        sbCountry.deleteCharAt(sbCountry.length() - 1);
+
+        StringBuilder sbCountry = StringUtils.formatStringList(bean.getCountries());
         tvCountries.setText(sbCountry.toString());
 
-        List<String> genres = bean.getGenres();
-        StringBuilder sbGenre = new StringBuilder();
-        for (String genre : genres) {
-            sbGenre.append(genre).append("/");
-        }
-        sbGenre.deleteCharAt(sbGenre.length() - 1);
+
+        StringBuilder sbGenre = StringUtils.formatStringList(bean.getGenres());
         tvGenres.setText(sbGenre.toString());
 
 
-        List<String> tags = bean.getTags();
-        StringBuilder sbTag = new StringBuilder();
-        for (String tag : tags) {
-            sbTag.append(tag).append("/");
-        }
-        sbTag.deleteCharAt(sbCountry.length() - 1);
+        StringBuilder sbTag = StringUtils.formatStringList(bean.getTags());
         tvTag.setText(sbTag);
 
         tvRatingsCount.setText(String.valueOf(bean.getRatings_count()));
