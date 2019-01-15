@@ -7,6 +7,7 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CircleCrop;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
 import com.bumptech.glide.request.RequestOptions;
 import com.bumptech.glide.request.target.SimpleTarget;
 import com.chen.kevin.hotspot.R;
@@ -48,6 +49,25 @@ public class ImageMgr {
         }
 
     }
+
+    public void loadRoundCornerImg(Context context, String url, ImageView imageView, int roundingRadius) {
+        //设置图片圆角角度
+        RoundedCorners roundedCorners = new RoundedCorners(roundingRadius);
+
+        if (TextUtils.isEmpty(url)) {
+            Glide.with(context)
+                    .load(R.mipmap.ic_launcher_round)
+                    .apply(RequestOptions.bitmapTransform(roundedCorners))
+                    .into(imageView);
+        } else {
+            Glide.with(context)
+                    .load(url)
+                    .apply(RequestOptions.bitmapTransform(roundedCorners))
+                    .into(imageView);
+        }
+
+    }
+
 
     public void getBitmap(Context context, String url, SimpleTarget<Drawable> target) {
         Glide.with(context)

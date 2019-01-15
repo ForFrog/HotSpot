@@ -8,9 +8,9 @@
         android:id="@+id/ll_bg"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="50dp"
         android:background="@color/grey"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:paddingBottom="50dp">
 
 
         <include layout="@layout/layout_top_bar" />
@@ -288,6 +288,7 @@
                         android:textColor="@color/font_white" />
 
                     <TextView
+                        android:id="@+id/tv_cast_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -349,10 +350,10 @@
                     android:padding="16dp">
 
                     <TextView
-                        android:textColor="@color/font_white"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="短评" />
+                        android:text="短评"
+                        android:textColor="@color/font_white" />
 
                     <android.support.v7.widget.RecyclerView
                         android:id="@+id/rv_comment"

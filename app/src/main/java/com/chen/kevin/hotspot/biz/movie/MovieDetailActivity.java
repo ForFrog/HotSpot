@@ -39,6 +39,8 @@ import com.chen.kevin.hotspot.mgr.ImageMgr;
 import com.chen.kevin.hotspot.util.StringUtils;
 import com.chen.kevin.hotspot.widget.decoration.SpaceItemDecoration;
 
+import java.util.List;
+
 public class MovieDetailActivity extends BaseActivity implements IMovieContract.MovieDetailActivityView, View.OnClickListener {
     public static final String EXTRA_STRING_ID = "extra_string_id";
     private static final String TAG = "MovieDetailActivity";
@@ -69,6 +71,9 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     private RecyclerView rvDirectors;
     private TextView tvExpand;
 
+    private TextView tvCastAll;
+
+
     private TextView tvTag;
     private TextView tvPubDate;
     private TextView tvDurations;
@@ -92,6 +97,7 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
     private MovieDetailTrailerAdapter movieDetailTrailerAdapter;
 
     private PopularReviewsFragment popularReviewsFragment;
+    private List<MovieDetailBean.CastsBean> casts;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -203,6 +209,10 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
         rvTrailer.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         movieDetailTrailerAdapter = new MovieDetailTrailerAdapter();
         rvTrailer.setAdapter(movieDetailTrailerAdapter);
+
+
+        tvCastAll = (TextView) findViewById(R.id.tv_cast_all);
+        tvCastAll.setOnClickListener(this);
     }
 
 
@@ -323,7 +333,8 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
         StringBuilder sbPubDate = StringUtils.formatStringList(bean.getPubdates());
         tvPubDate.setText(sbPubDate);
 
-        castsAdapter.setData(bean.getCasts());
+        casts = bean.getCasts();
+        castsAdapter.setData(casts);
         directorAdapter.setData(bean.getDirectors());
 
         popularCommentAdapter.setData(bean.getPopular_comments());
@@ -350,6 +361,9 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
             case R.id.layout_bar_left:
                 finish();
                 break;
+            case R.id.tv_cast_all:
+                showCastList();
+                break;
             case R.id.tv_expand:
                 if (tvSummary.getMaxLines() == 3) {
                     tvSummary.setMaxLines(Integer.MAX_VALUE);
@@ -361,5 +375,14 @@ public class MovieDetailActivity extends BaseActivity implements IMovieContract.
                 }
                 break;
         }
+    }
+
+    private void showCastList() {
+        CastListFragment castListFragment = CastListFragment.newInstance();
+        if (casts != null) {
+            castListFragment.setData(casts);
+        }
+        castListFragment.show(getSupportFragmentManager(), CastListFragment.class.getSimpleName());
+
     }
 }
