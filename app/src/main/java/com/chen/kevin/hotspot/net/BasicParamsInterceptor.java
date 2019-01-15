@@ -1,6 +1,6 @@
 package com.chen.kevin.hotspot.net;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import com.chen.kevin.hotspot.BuildConfig;
 

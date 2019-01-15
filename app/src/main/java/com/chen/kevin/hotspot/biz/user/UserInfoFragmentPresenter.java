@@ -1,7 +1,7 @@
 package com.chen.kevin.hotspot.biz.user;
 
-import android.arch.lifecycle.LifecycleOwner;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.annotation.NonNull;
 
 public class UserInfoFragmentPresenter implements IUserContract.UserInfoFragmentPresenter {
     private IUserContract.UserInfoFragmentView view;

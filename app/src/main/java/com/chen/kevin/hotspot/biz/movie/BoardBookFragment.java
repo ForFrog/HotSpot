@@ -1,6 +1,6 @@
 package com.chen.kevin.hotspot.biz.movie;
 
-import android.arch.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleObserver;
 import android.os.Bundle;
 import android.view.View;
 

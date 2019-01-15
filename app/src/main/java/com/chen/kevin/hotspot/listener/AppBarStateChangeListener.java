@@ -1,6 +1,6 @@
 package com.chen.kevin.hotspot.listener;
 
-import android.support.design.widget.AppBarLayout;
+import com.google.android.material.appbar.AppBarLayout;
 
 public abstract class AppBarStateChangeListener implements AppBarLayout.OnOffsetChangedListener {
     private State mCurrentState = State.IDLE;

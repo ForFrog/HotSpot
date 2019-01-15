@@ -1,6 +1,6 @@
 package com.chen.kevin.hotspot.biz;
 
-import android.arch.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleObserver;
 
 import com.chen.kevin.hotspot.base.BaseActivity;
 

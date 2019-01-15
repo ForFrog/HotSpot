@@ -1,7 +1,7 @@
 package com.chen.kevin.hotspot.biz.movie;
 
-import android.arch.lifecycle.LifecycleOwner;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.annotation.NonNull;
 
 import com.chen.kevin.hotspot.bean.MovieDetailBean;
 import com.chen.kevin.hotspot.net.HttpMgr;

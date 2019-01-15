@@ -1,7 +1,7 @@
 package com.chen.kevin.hotspot.main;
 
-import android.arch.lifecycle.LifecycleOwner;
-import android.support.annotation.NonNull;
+import androidx.lifecycle.LifecycleOwner;
+import androidx.annotation.NonNull;
 
 public class HomePresenter implements IHomeContract.Presenter {
 

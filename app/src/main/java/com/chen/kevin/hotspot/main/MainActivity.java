@@ -1,9 +1,9 @@
 package com.chen.kevin.hotspot.main;
 
-import android.arch.lifecycle.LifecycleObserver;
+import androidx.lifecycle.LifecycleObserver;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentPagerAdapter;
 import android.widget.Toast;
 
 import com.chaychan.library.BottomBarItem;

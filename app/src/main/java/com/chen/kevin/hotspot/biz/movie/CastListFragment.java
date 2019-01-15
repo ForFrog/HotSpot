@@ -1,10 +1,6 @@
 package com.chen.kevin.hotspot.biz.movie;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetDialogFragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,8 +8,13 @@ import android.view.ViewGroup;
 import com.chen.kevin.hotspot.R;
 import com.chen.kevin.hotspot.bean.MovieDetailBean;
 import com.chen.kevin.hotspot.biz.movie.adapter.CastsAdapter;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 
 import java.util.List;
+
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 public class CastListFragment extends BottomSheetDialogFragment {
 
